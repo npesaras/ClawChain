@@ -2,6 +2,7 @@
 
 A blockchain-powered platform connecting sustainable fish producers with global investors and buyers through tokenization. Built on ICP (Internet Computer Protocol) with transparent, traceable, and profitable aquaculture solutions.
 
+
 ## 🐟 What is TidalChain?
 
 TidalChain revolutionizes sustainable aquaculture financing by:
