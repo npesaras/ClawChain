@@ -149,7 +149,8 @@ export default function ProducerDashboard() {
                       className="object-cover"
                     />
                   </div>
-                )}                <div>
+                )}                
+                <div>
                   <h3 className="font-semibold text-lg">{token.species}</h3>
                   <p className="text-sm text-gray-600">
                     Token {token.id}
