@@ -1,78 +1,128 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Fish, Waves, TrendingUp, Shield, Users, Leaf } from "lucide-react"
+import { Fish, Waves, TrendingUp, Shield, Users, Leaf, Star, CheckCircle, ArrowRight } from "lucide-react"
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-200 to-white scroll-smooth">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+      <header className="border-b bg-white/95 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Waves className="h-8 w-8 text-blue-600" />
             <span className="text-2xl font-bold text-blue-900">AquaChain</span>
           </div>
-          <nav className="hidden md:flex items-center space-x-6">
-            <Link href="#how-it-works" className="text-gray-600 hover:text-blue-600">
+          <nav className="hidden md:flex items-center space-x-8">
+            <Link href="#how-it-works" className="text-gray-600 hover:text-blue-600 transition-colors">
               How It Works
             </Link>
-            <Link href="#platform-features" className="text-gray-600 hover:text-blue-600">
-              Platform Features
+            <Link href="#features" className="text-gray-600 hover:text-blue-600 transition-colors">
+              Features
+            </Link>
+            <Link href="#benefits" className="text-gray-600 hover:text-blue-600 transition-colors">
+              Benefits
             </Link>
           </nav>
           <div className="flex items-center space-x-3">
-            <Button className="font-bol" asChild>
-              <Link href="/auth" >Get Started</Link>
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-6" asChild>
+              <Link href="/auth">Get Started</Link>
             </Button>
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-semibold text-gray-900 mb-6">
-            Investing in a
-            <span className="text-blue-600 block font-bold ">Bountiful Future</span>
-          </h1>          
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Connecting restaurants with vetted lobster producers via blockchain tokenization for superior quality, 
-            increased revenue, and transparent sourcing.
-          </p>
+      <section className="relative py-24 px-4 bg-gradient-to-br from-blue-50 via-white to-blue-50">
+        <div className="container mx-auto">
+          <div className="text-center max-w-4xl mx-auto">
+            <div className="inline-flex items-center bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <Star className="h-4 w-4 mr-2" />
+              Blockchain-Powered Seafood Sourcing
+            </div>
+            <h1 className="text-6xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+              Premium Lobster,
+              <span className="text-blue-600 block">Direct Connection</span>
+            </h1>          
+            <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
+              Connect restaurants with vetted lobster producers through blockchain tokenization. 
+              Ensure superior quality, transparent sourcing, and increased revenue for all.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg" asChild>
+                <Link href="/auth">
+                  Start Sourcing
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" className="px-8 py-4 text-lg border-gray-300" asChild>
+                <Link href="#how-it-works">Learn More</Link>
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* How It Works */}
-      <section id="how-it-works" className="py-16 bg-gray-50">
+      {/* Stats Section */}
+      <section className="py-16 bg-blue-600">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">How AquaChain Works</h2>
+          <div className="grid md:grid-cols-3 gap-8 text-center text-white">
+            <div>
+              <div className="text-4xl font-bold mb-2">100%</div>
+              <div className="text-blue-100">Traceable Sourcing</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold mb-2">50+</div>
+              <div className="text-blue-100">Verified Producers</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold mb-2">24/7</div>
+              <div className="text-blue-100">Quality Monitoring</div>
+            </div>
+          </div>
+        </div>
+      </section>      
+      {/* How It Works */}
+      <section id="how-it-works" className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">How AquaChain Works</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              A simple three-step process to connect restaurants with premium lobster producers
+            </p>
+          </div>
           <div className="grid md:grid-cols-3 gap-8">            
-            <Card>
-              <CardHeader>
-                <Fish className="h-12 w-12 text-blue-600 mb-4" />
-                <CardTitle>Producers Register</CardTitle>
-                <CardDescription>
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow bg-white">
+              <CardHeader className="text-center p-8">
+                <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                  <Fish className="h-8 w-8 text-blue-600" />
+                </div>
+                <CardTitle className="text-2xl mb-4">Producers Register</CardTitle>
+                <CardDescription className="text-gray-600 text-lg leading-relaxed">
                   Vetted lobster producers register their premium catches on the blockchain, with quality certifications
-                  and traceability from ocean to table.
+                  and complete traceability from ocean to table.
                 </CardDescription>
               </CardHeader>
             </Card>
-            <Card>
-              <CardHeader>
-                <TrendingUp className="h-12 w-12 text-green-600 mb-4" />
-                <CardTitle>Quality Assured</CardTitle>
-                <CardDescription>
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow bg-white">
+              <CardHeader className="text-center p-8">
+                <div className="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                  <TrendingUp className="h-8 w-8 text-green-600" />
+                </div>
+                <CardTitle className="text-2xl mb-4">Quality Assured</CardTitle>
+                <CardDescription className="text-gray-600 text-lg leading-relaxed">
                   Each lobster is tracked with blockchain transparency, ensuring restaurants receive superior quality
                   with verified sourcing and freshness guarantees.
                 </CardDescription>
               </CardHeader>
             </Card>
-            <Card>
-              <CardHeader>
-                <Users className="h-12 w-12 text-purple-600 mb-4" />
-                <CardTitle>Restaurants Connect</CardTitle>
-                <CardDescription>
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow bg-white">
+              <CardHeader className="text-center p-8">
+                <div className="bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                  <Users className="h-8 w-8 text-purple-600" />
+                </div>
+                <CardTitle className="text-2xl mb-4">Restaurants Connect</CardTitle>
+                <CardDescription className="text-gray-600 text-lg leading-relaxed">
                   Restaurants directly connect with trusted lobster producers, securing premium seafood while
                   increasing producer revenue through transparent sourcing.
                 </CardDescription>
@@ -80,26 +130,130 @@ export default function HomePage() {
             </Card>
           </div>
         </div>
-      </section>      {/* Features */}
-      <section id="platform-features" className="py-16">
+      </section>
+
+      {/* Features */}
+      <section id="features" className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Platform Features</h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Platform Features</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Built on cutting-edge technology to ensure trust, transparency, and quality
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
             <div className="text-center">
-              <Shield className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Blockchain Security</h3>
-              <p className="text-gray-600">
-                Built on Aptos blockchain for secure, fast, and scalable transactions
+              <div className="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                <Shield className="h-10 w-10 text-blue-600" />
+              </div>
+              <h3 className="text-2xl font-semibold mb-4">Blockchain Security</h3>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                Built on Aptos blockchain for secure, fast, and scalable transactions with 
+                immutable record keeping and transparent operations.
               </p>
             </div>
             <div className="text-center">
-              <Leaf className="h-12 w-12 text-green-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Sustainability Tracking</h3>
-              <p className="text-gray-600">Real-time IoT monitoring and Government issued certifications</p>
+              <div className="bg-green-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                <Leaf className="h-10 w-10 text-green-600" />
+              </div>
+              <h3 className="text-2xl font-semibold mb-4">Sustainability Tracking</h3>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                Real-time IoT monitoring and government-issued certifications ensure 
+                sustainable practices and environmental compliance.
+              </p>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Benefits Section */}
+      <section id="benefits" className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose AquaChain?</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Experience the benefits of direct, transparent seafood sourcing
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Guaranteed Freshness",
+                description: "Direct from producer to restaurant with real-time tracking"
+              },
+              {
+                title: "Premium Quality",
+                description: "Only vetted producers with certified sustainable practices"
+              },
+              {
+                title: "Transparent Pricing",
+                description: "Fair pricing with no hidden fees or middleman markups"
+              },
+              {
+                title: "Blockchain Verified",
+                description: "Immutable records of origin, quality, and handling"
+              },
+              {
+                title: "Sustainable Sourcing",
+                description: "Supporting environmentally responsible fishing practices"
+              },
+              {
+                title: "Direct Relationships",
+                description: "Build lasting partnerships between restaurants and producers"
+              }
+            ].map((benefit, index) => (
+              <Card key={index} className="border-0 shadow-md hover:shadow-lg transition-shadow bg-white">
+                <CardHeader className="p-6">
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
+                    <div>
+                      <CardTitle className="text-lg mb-2">{benefit.title}</CardTitle>
+                      <CardDescription className="text-gray-600">
+                        {benefit.description}
+                      </CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-blue-600">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold text-white mb-6">
+            Ready to Transform Your Seafood Sourcing?
+          </h2>
+          <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+            Join the future of restaurant-producer connections with AquaChain's 
+            blockchain-powered platform.
+          </p>
+          <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold" asChild>
+            <Link href="/auth">
+              Get Started Today
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-12 bg-gray-900 text-gray-300">
+        <div className="container mx-auto px-4 text-center">
+          <div className="flex items-center justify-center space-x-2 mb-4">
+            <Waves className="h-8 w-8 text-blue-400" />
+            <span className="text-2xl font-bold text-white">AquaChain</span>
+          </div>
+          <p className="text-gray-400">
+            Connecting restaurants with premium lobster producers through blockchain technology.
+          </p>
+          <div className="mt-8 pt-8 border-t border-gray-800 text-sm text-gray-500">
+            © 2025 AquaChain. All rights reserved.
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
