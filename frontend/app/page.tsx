@@ -35,10 +35,10 @@ export default function HomePage() {
           <h1 className="text-5xl md:text-6xl font-semibold text-gray-900 mb-6">
             Investing in a
             <span className="text-blue-600 block font-bold ">Bountiful Future</span>
-          </h1>
+          </h1>          
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Connect sustainable fish producers with global investors and buyers through blockchain-powered tokenization.
-            Transparent, traceable, and profitable aquaculture for everyone.
+            Connecting restaurants with vetted lobster producers via blockchain tokenization for superior quality, 
+            increased revenue, and transparent sourcing.
           </p>
         </div>
       </section>
@@ -47,62 +47,55 @@ export default function HomePage() {
       <section id="how-it-works" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">How AquaChain Works</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">            
             <Card>
               <CardHeader>
                 <Fish className="h-12 w-12 text-blue-600 mb-4" />
-                <CardTitle>Producers Tokenize</CardTitle>
+                <CardTitle>Producers Register</CardTitle>
                 <CardDescription>
-                  Sustainable fish producers create tokens representing their future harvests, backed by IoT monitoring
-                  and sustainability certifications.
+                  Vetted lobster producers register their premium catches on the blockchain, with quality certifications
+                  and traceability from ocean to table.
                 </CardDescription>
               </CardHeader>
             </Card>
             <Card>
               <CardHeader>
                 <TrendingUp className="h-12 w-12 text-green-600 mb-4" />
-                <CardTitle>Investors Fund</CardTitle>
+                <CardTitle>Quality Assured</CardTitle>
                 <CardDescription>
-                  Global investors purchase tokens to fund sustainable aquaculture operations and earn returns from
-                  successful harvests.
+                  Each lobster is tracked with blockchain transparency, ensuring restaurants receive superior quality
+                  with verified sourcing and freshness guarantees.
                 </CardDescription>
               </CardHeader>
             </Card>
             <Card>
               <CardHeader>
                 <Users className="h-12 w-12 text-purple-600 mb-4" />
-                <CardTitle>Buyers Purchase</CardTitle>
+                <CardTitle>Restaurants Connect</CardTitle>
                 <CardDescription>
-                  Restaurants and retailers buy tokens to secure premium, traceable fish with verified sustainability
-                  credentials.
+                  Restaurants directly connect with trusted lobster producers, securing premium seafood while
+                  increasing producer revenue through transparent sourcing.
                 </CardDescription>
               </CardHeader>
             </Card>
           </div>
         </div>
-      </section>
-
-      {/* Features */}
+      </section>      {/* Features */}
       <section id="platform-features" className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Platform Features</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             <div className="text-center">
               <Shield className="h-12 w-12 text-blue-600 mx-auto mb-4" />
               <h3 className="text-xl font-semibold mb-2">Blockchain Security</h3>
               <p className="text-gray-600">
-                Built on ICP with Internet Identity for secure, decentralized transactions
+                Built on Aptos blockchain for secure, fast, and scalable transactions
               </p>
             </div>
             <div className="text-center">
               <Leaf className="h-12 w-12 text-green-600 mx-auto mb-4" />
               <h3 className="text-xl font-semibold mb-2">Sustainability Tracking</h3>
               <p className="text-gray-600">Real-time IoT monitoring and Government issued certifications</p>
-            </div>
-            <div className="text-center">
-              <TrendingUp className="h-12 w-12 text-purple-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">DAO Governance</h3>
-              <p className="text-gray-600">Community-driven platform decisions and sustainability standards</p>
             </div>
           </div>
         </div>
