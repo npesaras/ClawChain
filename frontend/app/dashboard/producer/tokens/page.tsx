@@ -92,13 +92,12 @@ export default function MyTokensPage() {
     { month: "May", totalTokens: 6, activeTokens: 5, completedTokens: 1, avgReturn: 12.3 },
     { month: "Jun", totalTokens: 6, activeTokens: 4, completedTokens: 2, avgReturn: 13.1 },
   ]
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Ready Soon":
         return "bg-green-100 text-green-800"
       case "Growing":
-        return "bg-blue-100 text-blue-800"
+        return "bg-orange-100 text-orange-800"
       case "Funding":
         return "bg-yellow-100 text-yellow-800"
       case "Harvested":
@@ -139,11 +138,10 @@ export default function MyTokensPage() {
   const filteredTokens = statusFilter === "all" ? tokens : tokens.filter((token) => token.status === statusFilter)
 
   const totalValue = tokens.reduce((sum, token) => sum + token.total, 0)
-  const totalFunded = tokens.reduce((sum, token) => sum + token.funded, 0)
-  const avgProgress = tokens.reduce((sum, token) => sum + token.progress, 0) / tokens.length
+  const totalFunded = tokens.reduce((sum, token) => sum + token.funded, 0)  const avgProgress = tokens.reduce((sum, token) => sum + token.progress, 0) / tokens.length
 
   return (
-    <div className="min-h-screen bg-blue-100">
+    <div className="min-h-screen bg-orange-50">
       <DashboardHeader userRole="producer" />
       <div className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-between mb-8">

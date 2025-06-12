@@ -46,9 +46,8 @@ export default function TokenizePage() {
     console.log("Creating token with data:", formData)
     // Token creation logic would go here
   }
-
   return (
-    <div className="min-h-screen bg-blue-200">
+    <div className="min-h-screen bg-orange-50">
       <DashboardHeader userRole="producer" />
 
       <div className="container mx-auto px-4 py-8">

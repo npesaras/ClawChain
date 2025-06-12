@@ -189,9 +189,8 @@ export default function ProducerDashboard() {
       ))}
     </div>
   )
-
   return (
-    <div className="min-h-screen bg-blue-100">
+    <div className="min-h-screen bg-orange-50">
       <DashboardHeader userRole="producer" />
 
       <div className="container mx-auto px-4 py-8">
