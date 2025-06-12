@@ -24,6 +24,7 @@ export default function AuthPage() {
     // Redirect to role-specific dashboard
     window.location.href = `/dashboard/${role}`
   }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-500 relative overflow-hidden">
       {/* Background decorative elements */}
@@ -45,94 +46,182 @@ export default function AuthPage() {
       </header>
 
       <div className="container mx-auto px-4 py-12 relative z-10">
-        <div className="max-w-4xl mx-auto">          <div className="text-center mb-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-8">
             <h1 className="text-5xl font-bold text-white mb-4 drop-shadow-lg">
-              Join 
+              Join{" "}
               <span className="text-cyan-200">AquaChain</span>
             </h1>
             <p className="text-xl text-blue-100">Choose your role and connect premium lobster sourcing with transparency</p>
-          </div>          <Tabs value={selectedRole} onValueChange={setSelectedRole} className="w-full">
+          </div>
+          
+          <Tabs value={selectedRole} onValueChange={setSelectedRole} className="w-full">
             <TabsList className="grid w-full grid-cols-2 bg-white/20 backdrop-blur-sm border-0 p-1 rounded-xl">
-              <TabsTrigger value="producer" className="data-[state=active]:bg-white data-[state=active]:text-blue-600 text-white font-medium rounded-lg">Lobster Producer</TabsTrigger>
-              <TabsTrigger value="restaurant" className="data-[state=active]:bg-white data-[state=active]:text-green-600 text-white font-medium rounded-lg">Restaurant</TabsTrigger>            </TabsList>
+              <TabsTrigger value="producer" className="data-[state=active]:bg-white data-[state=active]:text-blue-600 text-white font-medium rounded-lg">
+                Lobster Producer
+              </TabsTrigger>
+              <TabsTrigger value="restaurant" className="data-[state=active]:bg-white data-[state=active]:text-green-600 text-white font-medium rounded-lg">
+                Restaurant
+              </TabsTrigger>
+            </TabsList>
+            
             <TabsContent value="producer" className="mt-8">
               <Card className="border-0 shadow-2xl hover:shadow-3xl transition-all duration-300 bg-white/95 backdrop-blur-sm">
-                <CardHeader className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-t-lg">
+                <CardHeader className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-t-lg p-8">
                   <div className="flex items-center justify-between">
-                    <div>                      <CardTitle className="flex items-center gap-2 text-2xl">
-                        <Fish className="h-6 w-6 text-blue-600" />
+                    <div>
+                      <CardTitle className="flex items-center gap-3 text-2xl mb-3">
+                        <div className="p-2 bg-blue-100 rounded-full">
+                          <Fish className="h-6 w-6 text-blue-600" />
+                        </div>
                         Lobster Producer
-                      </CardTitle>                      <CardDescription className="text-lg mt-2">
+                      </CardTitle>
+                      <CardDescription className="text-lg text-gray-600">
                         Connect directly with restaurants and tokenize your premium lobster harvests for superior quality assurance
                       </CardDescription>
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-6">                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <h4 className="font-semibold">What you can do:</h4>
-                      <ul className="text-sm text-gray-600 space-y-1">
-                        <li>• Create tokens for premium lobster harvests</li>
-                        <li>• Connect directly with restaurant buyers</li>
-                        <li>• Ensure quality tracking and traceability</li>
-                        <li>• Increase revenue through transparent sourcing</li>
-                        <li>• Build reputation with restaurant partners</li>
+                <CardContent className="space-y-8 p-8">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-3">
+                      <h4 className="font-semibold text-lg text-gray-800 flex items-center gap-2">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        What you can do:
+                      </h4>
+                      <ul className="text-gray-600 space-y-2 ml-4">
+                        <li className="flex items-start gap-2">
+                          <span className="text-blue-500 mt-1">•</span>
+                          Create tokens for premium lobster harvests
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-blue-500 mt-1">•</span>
+                          Connect directly with restaurant buyers
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-blue-500 mt-1">•</span>
+                          Ensure quality tracking and traceability
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-blue-500 mt-1">•</span>
+                          Increase revenue through transparent sourcing
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-blue-500 mt-1">•</span>
+                          Build reputation with restaurant partners
+                        </li>
                       </ul>
                     </div>
-                    <div className="space-y-2">
-                      <h4 className="font-semibold">Requirements:</h4>
-                      <ul className="text-sm text-gray-600 space-y-1">
-                        <li>• Sustainable fishing certifications</li>
-                        <li>• Quality assurance documentation</li>
-                        <li>• KYC verification</li>
+                    <div className="space-y-3">
+                      <h4 className="font-semibold text-lg text-gray-800 flex items-center gap-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        Requirements:
+                      </h4>
+                      <ul className="text-gray-600 space-y-2 ml-4">
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-500 mt-1">•</span>
+                          Sustainable fishing certifications
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-500 mt-1">•</span>
+                          Quality assurance documentation
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-500 mt-1">•</span>
+                          KYC verification
+                        </li>
                       </ul>
                     </div>
-                  </div>                  <Button onClick={() => handleInternetIdentityLogin("producer")} className="w-full bg-blue-600 hover:bg-blue-700" size="lg">
-                    <Shield className="h-4 w-4 mr-2" />
+                  </div>
+                  <Button 
+                    onClick={() => handleInternetIdentityLogin("producer")} 
+                    className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300" 
+                    size="lg"
+                  >
+                    <Shield className="h-5 w-5 mr-3" />
                     Continue with Internet Identity
-                    <ArrowRight className="h-4 w-4 ml-2" />
+                    <ArrowRight className="h-5 w-5 ml-3" />
                   </Button>
                 </CardContent>
               </Card>
-            </TabsContent>            <TabsContent value="restaurant" className="mt-8">
-              <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow bg-white">
-                <CardHeader>
+            </TabsContent>
+            
+            <TabsContent value="restaurant" className="mt-8">
+              <Card className="border-0 shadow-2xl hover:shadow-3xl transition-all duration-300 bg-white/95 backdrop-blur-sm">
+                <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-t-lg p-8">
                   <div className="flex items-center justify-between">
-                    <div>                      <CardTitle className="flex items-center gap-2">
-                        <ChefHat className="h-5 w-5 text-green-600" />
+                    <div>
+                      <CardTitle className="flex items-center gap-3 text-2xl mb-3">
+                        <div className="p-2 bg-green-100 rounded-full">
+                          <ChefHat className="h-6 w-6 text-green-600" />
+                        </div>
                         Restaurant
                       </CardTitle>
-                      <CardDescription>
+                      <CardDescription className="text-lg text-gray-600">
                         Source premium lobster directly from verified producers with complete transparency and quality assurance
                       </CardDescription>
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <h4 className="font-semibold">What you can do:</h4>
-                      <ul className="text-sm text-gray-600 space-y-1">
-                        <li>• Source premium lobster directly from producers</li>
-                        <li>• Verify quality and freshness with blockchain tracking</li>
-                        <li>• Build direct relationships with trusted suppliers</li>
-                        <li>• Access transparent pricing and sourcing</li>
-                        <li>• Ensure sustainable and ethical sourcing</li>
+                <CardContent className="space-y-8 p-8">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-3">
+                      <h4 className="font-semibold text-lg text-gray-800 flex items-center gap-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        What you can do:
+                      </h4>
+                      <ul className="text-gray-600 space-y-2 ml-4">
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-500 mt-1">•</span>
+                          Source premium lobster directly from producers
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-500 mt-1">•</span>
+                          Verify quality and freshness with blockchain tracking
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-500 mt-1">•</span>
+                          Build direct relationships with trusted suppliers
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-500 mt-1">•</span>
+                          Access transparent pricing and sourcing
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-500 mt-1">•</span>
+                          Ensure sustainable and ethical sourcing
+                        </li>
                       </ul>
                     </div>
-                    <div className="space-y-2">
-                      <h4 className="font-semibold">Requirements:</h4>
-                      <ul className="text-sm text-gray-600 space-y-1">
-                        <li>• Restaurant business verification</li>
-                        <li>• KYC verification</li>
-                        <li>• Quality standards agreement</li>
+                    <div className="space-y-3">
+                      <h4 className="font-semibold text-lg text-gray-800 flex items-center gap-2">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        Requirements:
+                      </h4>
+                      <ul className="text-gray-600 space-y-2 ml-4">
+                        <li className="flex items-start gap-2">
+                          <span className="text-blue-500 mt-1">•</span>
+                          Restaurant business verification
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-blue-500 mt-1">•</span>
+                          KYC verification
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-blue-500 mt-1">•</span>
+                          Quality standards agreement
+                        </li>
                       </ul>
                     </div>
                   </div>
-                  <Button onClick={() => handleInternetIdentityLogin("restaurant")} className="w-full bg-green-600 hover:bg-green-700" size="lg">
-                    <Shield className="h-4 w-4 mr-2" />
+                  <Button 
+                    onClick={() => handleInternetIdentityLogin("restaurant")} 
+                    className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300" 
+                    size="lg"
+                  >
+                    <Shield className="h-5 w-5 mr-3" />
                     Continue with Internet Identity
-                    <ArrowRight className="h-4 w-4 ml-2" />
+                    <ArrowRight className="h-5 w-5 ml-3" />
                   </Button>
                 </CardContent>
               </Card>
