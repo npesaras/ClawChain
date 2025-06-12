@@ -34,8 +34,8 @@ export default function MyTokensPage() {
   const tokens = sharedTokens.map((token, index) => ({
     id: token.id,
     species: token.species,
-    pond: token.pond === "pond-a" ? "Pond A" : token.pond === "pond-b" ? "Pond B" : "Pond C",
-    location: token.pond === "pond-a" ? "North Sector" : token.pond === "pond-b" ? "East Sector" : "South Sector",
+    pond: index === 0 ? "Pond A" : index === 1 ? "Pond B" : "Pond C",
+    location: index === 0 ? "North Sector" : index === 1 ? "East Sector" : "South Sector",
     quantity: token.quantity,
     harvestDate: token.harvestDate,
     progress: token.progress,
@@ -51,42 +51,6 @@ export default function MyTokensPage() {
     image: token.image,
   }))
 
-  // Mock data for performance charts
-  const performanceData = [
-    { month: "Jan", growth: 15, funding: 12000, investors: 3, value: 18000 },
-    { month: "Feb", growth: 28, funding: 24000, investors: 5, value: 22000 },
-    { month: "Mar", growth: 42, funding: 35000, investors: 8, value: 28000 },
-    { month: "Apr", growth: 58, funding: 48000, investors: 12, value: 35000 },
-    { month: "May", growth: 75, funding: 62000, investors: 15, value: 42000 },
-    { month: "Jun", growth: 85, funding: 75000, investors: 18, value: 48000 },
-  ]
-
-  const revenueData = [
-    { month: "Jan", revenue: 8500, profit: 2100, expenses: 6400 },
-    { month: "Feb", revenue: 12300, profit: 3200, expenses: 9100 },
-    { month: "Mar", revenue: 18700, profit: 5400, expenses: 13300 },
-    { month: "Apr", revenue: 24500, profit: 7800, expenses: 16700 },
-    { month: "May", revenue: 31200, profit: 10500, expenses: 20700 },
-    { month: "Jun", revenue: 38900, profit: 13200, expenses: 25700 },
-  ]
-
-  const riskData = [
-    { month: "Jan", lowRisk: 60, mediumRisk: 30, highRisk: 10 },
-    { month: "Feb", lowRisk: 65, mediumRisk: 25, highRisk: 10 },
-    { month: "Mar", lowRisk: 70, mediumRisk: 22, highRisk: 8 },
-    { month: "Apr", lowRisk: 68, mediumRisk: 25, highRisk: 7 },
-    { month: "May", lowRisk: 72, mediumRisk: 20, highRisk: 8 },
-    { month: "Jun", lowRisk: 75, mediumRisk: 18, highRisk: 7 },
-  ]
-
-  const tokenMetricsData = [
-    { month: "Jan", totalTokens: 2, activeTokens: 2, completedTokens: 0, avgReturn: 8.5 },
-    { month: "Feb", totalTokens: 3, activeTokens: 3, completedTokens: 0, avgReturn: 9.2 },
-    { month: "Mar", totalTokens: 4, activeTokens: 4, completedTokens: 0, avgReturn: 10.1 },
-    { month: "Apr", totalTokens: 5, activeTokens: 4, completedTokens: 1, avgReturn: 11.8 },
-    { month: "May", totalTokens: 6, activeTokens: 5, completedTokens: 1, avgReturn: 12.3 },
-    { month: "Jun", totalTokens: 6, activeTokens: 4, completedTokens: 2, avgReturn: 13.1 },
-  ]
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Ready Soon":
@@ -143,7 +107,8 @@ export default function MyTokensPage() {
           <div>
             <h1 className="text-3xl font-bold text-gray-900">My Tokens</h1>
             <p className="text-gray-600">Manage and monitor all your fish harvest tokens</p>
-          </div>          <div className="flex space-x-3">
+          </div>          
+          <div className="flex space-x-3">
             <Button asChild>
               <Link href="/createNewToken">
                 <Plus className="h-4 w-4 mr-2" />
@@ -154,7 +119,8 @@ export default function MyTokensPage() {
         </div>
         {/* Summary Stats */}
         <div className="grid md:grid-cols-4 gap-6 mb-8">
-          <Card>            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <Card>            
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Tokens</CardTitle>
               <Image src="/shrimp.svg" alt="Shrimp" width={16} height={16} className="text-muted-foreground" />
             </CardHeader>
@@ -303,7 +269,8 @@ export default function MyTokensPage() {
                           <div className="flex items-center justify-between text-sm">
                             <span className="text-gray-600">Risk Level</span>
                             <span className={`font-medium ${getRiskColor(token.riskLevel)}`}>{token.riskLevel}</span>
-                          </div>                          <div className="flex space-x-2">                            
+                          </div>                          
+                          <div className="flex space-x-2">                            
                             <Button variant="outline" size="sm" className="flex-1" asChild>
                               <Link href="/viewToken">View Details</Link>
                             </Button>
