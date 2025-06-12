@@ -9,7 +9,6 @@ export interface Transaction {
   timestamp: string
   status: "completed" | "pending" | "failed"
   relatedTokenId?: string
-  relatedPondId?: string
   investorName?: string
   icon: string
 }
@@ -37,8 +36,7 @@ export const transactions: Transaction[] = [
     status: "completed",
     relatedTokenId: "RTT-002",
     icon: "CheckCircle"
-  },
-  {
+  },  {
     id: "txn_003",
     type: "harvest",
     title: "Harvest Completed",
@@ -47,7 +45,6 @@ export const transactions: Transaction[] = [
     timestamp: "2025-06-02T14:20:00Z",
     status: "completed",
     relatedTokenId: "SBT-003",
-    relatedPondId: "pond_001",
     icon: "Fish"
   },
   {
@@ -65,12 +62,10 @@ export const transactions: Transaction[] = [
     id: "txn_005",
     type: "token_creation",
     title: "New Token Created",
-    description: "Arctic Char Token #ACT-005 created for Pond B2",
-    amount: "₱120,000",
+    description: "Arctic Char Token #ACT-005 created for Pond B2",    amount: "₱120,000",
     timestamp: "2025-06-01T16:30:00Z",
     status: "completed",
     relatedTokenId: "ACT-005",
-    relatedPondId: "pond_003",
     icon: "Plus"
   },
   {
@@ -122,12 +117,10 @@ export const transactions: Transaction[] = [
     id: "txn_010",
     type: "harvest",
     title: "Harvest Scheduled",
-    description: "Atlantic Salmon harvest scheduled for Pond A3",
-    amount: "₱320,000",
+    description: "Atlantic Salmon harvest scheduled for Pond A3",    amount: "₱320,000",
     timestamp: "2025-05-30T08:00:00Z",
     status: "pending",
     relatedTokenId: "AST-004",
-    relatedPondId: "pond_002",
     icon: "Calendar"
   }
 ]

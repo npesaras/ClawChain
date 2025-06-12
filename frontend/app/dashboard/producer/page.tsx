@@ -26,14 +26,7 @@ import {
 import { DashboardHeader } from "@/components/dashboard-header"
 
 // Import shared data
-import { 
-  ponds, 
-  getTotalPonds, 
-  getTotalCapacity, 
-  getTotalCurrentStock, 
-  getTotalActiveTokens, 
-  getTotalValue 
-} from "@/lib/data/ponds"
+// Removed pond imports
 
 import { 
   tokens, 
@@ -58,11 +51,8 @@ import {
 export default function ProducerDashboard() {
   const [timeRange, setTimeRange] = useState("7d")
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
-
   // Calculate dashboard stats using shared data
-  const totalPonds = getTotalPonds()
-  const totalCapacity = getTotalCapacity()
-  const currentStock = getTotalCurrentStock()
+  // Removed pond calculations
   const activeTokens = getActiveTokensCount()
   const totalValue = getTotalTokenValue()
 
@@ -74,15 +64,11 @@ export default function ProducerDashboard() {
 
   // Get species revenue data
   const speciesRevenueData = getSpeciesRevenue()
-
   // Get tokens by status
   const readySoonTokens = getTokensByStatus("Ready Soon")
   const growingTokens = getTokensByStatus("Growing")
 
-  // Calculate utilization percentage
-  const totalCapacityNum = parseInt(getTotalCapacity().replace(/[^0-9]/g, ''))
-  const currentStockNum = parseInt(getTotalCurrentStock().replace(/[^0-9]/g, ''))
-  const utilizationPercentage = Math.round((currentStockNum / totalCapacityNum) * 100)
+  // Removed pond utilization calculations
   const renderTokenGridView = () => (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {tokens.map((token) => (
@@ -169,11 +155,10 @@ export default function ProducerDashboard() {
                       className="object-cover"
                     />
                   </div>
-                )}
-                <div>
+                )}                <div>
                   <h3 className="font-semibold text-lg">{token.species}</h3>
                   <p className="text-sm text-gray-600">
-                    Token {token.id} • {token.pond}
+                    Token {token.id}
                   </p>
                 </div>
               </div>
@@ -213,7 +198,8 @@ export default function ProducerDashboard() {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Good morning! Mario</h1>            <p className="text-gray-600">Manage your ponds, harvests, and earnings — all in one place.</p>
+            <h1 className="text-3xl font-bold text-gray-900">Good morning! Mario</h1>
+            <p className="text-gray-600">Manage your harvests and earnings — all in one place.</p>
           </div>
           <Button asChild>
             <Link href="/createNewToken">
@@ -280,79 +266,7 @@ export default function ProducerDashboard() {
             <TabsTrigger value="harvests">My Harvests</TabsTrigger>
             <TabsTrigger value="revenue">Revenue</TabsTrigger>
             <TabsTrigger value="performance">Token Performance</TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="overview" className="space-y-6">
-            {/* Utilization Overview */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center">
-                  Overall Pond Utilization
-                </CardTitle>
-                <CardDescription>
-                  Current stock capacity across all ponds
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <p className="text-2xl font-bold text-gray-900">{utilizationPercentage}%</p>
-                      <p className="text-sm text-gray-600">
-                        {currentStock} of {totalCapacity} capacity used
-                      </p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-sm text-gray-600">Available Capacity</p>
-                      <p className="text-lg font-semibold text-blue-600">
-                        {(totalCapacityNum - currentStockNum).toLocaleString()} kg
-                      </p>
-                    </div>
-                  </div>
-                  <Progress value={utilizationPercentage} className="h-3" />
-                </div>
-              </CardContent>
-            </Card>
-
-            <div className="grid lg:grid-cols-2 gap-8">
-              {/* Pond Status Overview */}
-              <Card>
-                <CardHeader>                  
-                  <CardTitle className="flex items-center justify-between">
-                    <span className="flex items-center">
-                      Pond Status
-                    </span>
-                  </CardTitle>
-                  <CardDescription>Quick overview of your pond conditions</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {ponds.map((pond) => (
-                    <div key={pond.id} className="flex items-center justify-between p-3 bg-gray-200 rounded-lg">
-                      <div className="flex items-center space-x-3">
-                        <div>
-                          <p className="font-medium">{pond.name}</p>
-                          <p className="text-sm text-gray-600">{pond.location}</p>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <Badge 
-                          variant="outline" 
-                          className={
-                            pond.status === "optimal" ? "bg-green-100 text-green-800" :
-                            pond.status === "good" ? "bg-blue-100 text-blue-800" :
-                            pond.status === "attention" ? "bg-yellow-100 text-yellow-800" :
-                            "bg-red-100 text-red-800"
-                          }
-                        >
-                          {pond.status}
-                        </Badge>
-                        <p className="text-sm text-gray-600 mt-1">{pond.utilization}% utilized</p>
-                      </div>
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
-
+          </TabsList>          <TabsContent value="overview" className="space-y-6">            <div className="grid lg:grid-cols-2 gap-8">
               {/* Recent Tokens */}
               <Card>
                 <CardHeader>
