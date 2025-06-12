@@ -63,7 +63,8 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>      
+      </section>    
+
       {/* How It Works */}
       <section id="how-it-works" className="py-20 bg-orange-100">
         <div className="container mx-auto px-4">
@@ -75,7 +76,8 @@ export default function HomePage() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">            
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow bg-white">
-              <CardHeader className="text-center p-8">                <div className="bg-orange-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+              <CardHeader className="text-center p-8">                
+                <div className="bg-orange-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
                   <Image src="/shrimp.svg" alt="Shrimp" width={32} height={32} />
                 </div>
                 <CardTitle className="text-2xl mb-4">Producers Register</CardTitle>
@@ -122,7 +124,8 @@ export default function HomePage() {
               Built on cutting-edge technology to ensure trust, transparency, and quality
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">            <div className="text-center">
+          <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">            
+            <div className="text-center">
               <div className="bg-orange-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                 <Shield className="h-10 w-10 text-orange-600" />
               </div>
