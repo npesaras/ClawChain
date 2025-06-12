@@ -134,11 +134,11 @@ export default function MyTokensPage() {
         return "text-gray-600"
     }
   }
-
   const filteredTokens = statusFilter === "all" ? tokens : tokens.filter((token) => token.status === statusFilter)
 
   const totalValue = tokens.reduce((sum, token) => sum + token.total, 0)
-  const totalFunded = tokens.reduce((sum, token) => sum + token.funded, 0)  const avgProgress = tokens.reduce((sum, token) => sum + token.progress, 0) / tokens.length
+  const totalFunded = tokens.reduce((sum, token) => sum + token.funded, 0)
+  const avgProgress = tokens.reduce((sum, token) => sum + token.progress, 0) / tokens.length
 
   return (
     <div className="min-h-screen bg-orange-50">
