@@ -63,27 +63,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-blue-600">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 text-center text-white">
-            <div>
-              <div className="text-4xl font-bold mb-2">100%</div>
-              <div className="text-blue-100">Traceable Sourcing</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold mb-2">50+</div>
-              <div className="text-blue-100">Verified Producers</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold mb-2">24/7</div>
-              <div className="text-blue-100">Quality Monitoring</div>
-            </div>
-          </div>
-        </div>
-      </section>      
       {/* How It Works */}
-      <section id="how-it-works" className="py-20 bg-gray-50">
+      <section id="how-it-works" className="py-20 bg-blue-100">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">How AquaChain Works</h2>
@@ -239,21 +220,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 bg-gray-900 text-gray-300">
-        <div className="container mx-auto px-4 text-center">
-          <div className="flex items-center justify-center space-x-2 mb-4">
-            <Waves className="h-8 w-8 text-blue-400" />
-            <span className="text-2xl font-bold text-white">AquaChain</span>
-          </div>
-          <p className="text-gray-400">
-            Connecting restaurants with premium lobster producers through blockchain technology.
-          </p>
-          <div className="mt-8 pt-8 border-t border-gray-800 text-sm text-gray-500">
-            © 2025 AquaChain. All rights reserved.
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
