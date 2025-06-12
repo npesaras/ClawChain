@@ -4,7 +4,8 @@ import React from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Waves, Shield, ArrowRight } from "lucide-react"
+import { Shield, ArrowRight } from "lucide-react"
+import Image from "next/image"
 
 export default function AuthPage() {
   const handleInternetIdentityLogin = (role: string) => {
@@ -18,29 +19,26 @@ export default function AuthPage() {
     // Redirect to role-specific dashboard
     window.location.href = `/dashboard/${role}`
   }
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-200 to-white">
+    <div className="min-h-screen bg-orange-50">
       {/* Header */}
       <header className="border-b bg-white/80 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2">
-            <Waves className="h-8 w-8 text-blue-600" />
-            <span className="text-2xl font-bold text-blue-900">Aquachain</span>
-          </Link>
-          <Button variant="outline" asChild>
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">          <Link href="/" className="flex items-center space-x-2">
+            <Image src="/shrimp.svg" alt="Shrimp" width={32} height={32} className="text-orange-600" />
+            <span className="text-2xl font-bold text-orange-900">ClawChain</span>
+          </Link><Button variant="outline" asChild>
             <Link href="/">Back to Home</Link>
           </Button>
         </div>
       </header>
+      
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-semibold text-gray-900 mb-4">
-              Join <span className="font-bold text-blue-900">Aquachain</span>
+          <div className="text-center mb-8">            <h1 className="text-4xl font-semibold text-gray-900 mb-4">
+              Join <span className="font-bold text-orange-900">ClawChain</span>
             </h1>
             <p className="text-xl text-gray-600">Choose your role and start your sustainable lobster sourcing journey</p>
-          </div>          
+          </div>
           <Card className="mt-8">
             <CardHeader>
               <div className="flex items-center justify-between">

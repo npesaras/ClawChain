@@ -11,7 +11,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import {
-  Fish,
   Calendar,
   TrendingUp,
   BarChart3,
@@ -92,13 +91,12 @@ export default function MyTokensPage() {
     { month: "May", totalTokens: 6, activeTokens: 5, completedTokens: 1, avgReturn: 12.3 },
     { month: "Jun", totalTokens: 6, activeTokens: 4, completedTokens: 2, avgReturn: 13.1 },
   ]
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Ready Soon":
         return "bg-green-100 text-green-800"
       case "Growing":
-        return "bg-blue-100 text-blue-800"
+        return "bg-orange-100 text-orange-800"
       case "Funding":
         return "bg-yellow-100 text-yellow-800"
       case "Harvested":
@@ -135,7 +133,6 @@ export default function MyTokensPage() {
         return "text-gray-600"
     }
   }
-
   const filteredTokens = statusFilter === "all" ? tokens : tokens.filter((token) => token.status === statusFilter)
 
   const totalValue = tokens.reduce((sum, token) => sum + token.total, 0)
@@ -143,7 +140,7 @@ export default function MyTokensPage() {
   const avgProgress = tokens.reduce((sum, token) => sum + token.progress, 0) / tokens.length
 
   return (
-    <div className="min-h-screen bg-blue-100">
+    <div className="min-h-screen bg-orange-50">
       <DashboardHeader userRole="producer" />
       <div className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-between mb-8">
@@ -161,10 +158,9 @@ export default function MyTokensPage() {
         </div>
         {/* Summary Stats */}
         <div className="grid md:grid-cols-4 gap-6 mb-8">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <Card>            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Tokens</CardTitle>
-              <Fish className="h-4 w-4 text-muted-foreground" />
+              <Image src="/shrimp.svg" alt="Shrimp" width={16} height={16} className="text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{tokens.length}</div>

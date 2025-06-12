@@ -12,16 +12,11 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
 // Import icons
 import {
-
-  BarChart3,
   Plus,
   Eye,
   Activity,
-  Users,
   Grid3X3,
-  List,
-  CheckCircle,
-  ArrowUpRight,
+  List
 } from "lucide-react"
 import { DashboardHeader } from "@/components/dashboard-header"
 
@@ -189,9 +184,8 @@ export default function ProducerDashboard() {
       ))}
     </div>
   )
-
   return (
-    <div className="min-h-screen bg-blue-100">
+    <div className="min-h-screen bg-orange-50">
       <DashboardHeader userRole="producer" />
 
       <div className="container mx-auto px-4 py-8">

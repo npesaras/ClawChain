@@ -1,11 +1,11 @@
-# AquaChain
+# ClawChain
 
 A blockchain-powered platform connecting sustainable fish producers with global investors and buyers through tokenization. Built on ICP (Internet Computer Protocol) with transparent, traceable, and profitable aquaculture solutions.
 
 
-## 🐟 What is AquaChain?
+## 🐟 What is ClawChain?
 
-AquaChain revolutionizes sustainable aquaculture financing by:
+ClawChain revolutionizes sustainable aquaculture financing by:
 - **producers**: Tokenize future harvests with IoT monitoring and sustainability certifications.
 - **Investors**: Fund sustainable operations and earn returns from successful harvests.
 - **Buyers**: Secure premium, traceable fish with verified sustainability credentials.
@@ -21,9 +21,8 @@ AquaChain revolutionizes sustainable aquaculture financing by:
 
 ### Installation
 
-1. **Clone the repository**
-   ```bash   git clone https://github.com/your-username/AquaChain-Aptos.git
-   cd AquaChain-Aptos
+1. **Clone the repository**   ```bash   git clone https://github.com/your-username/ClawChain-Aptos.git
+   cd ClawChain-Aptos
    ```
 
 2. **Install dependencies**

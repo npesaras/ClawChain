@@ -12,7 +12,7 @@ export const speciesRevenue: SpeciesRevenue[] = [
     name: "Tilapia",
     revenue: 180450,
     percentage: 36,
-    color: "bg-blue-500"
+    color: "bg-orange-500"
   },
   {
     id: "milkfish",

@@ -10,7 +10,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Separator } from "@/components/ui/separator"
 import {
-  Fish,
   MapPin,
   Calendar,
   Thermometer,
@@ -42,9 +41,8 @@ export default function ViewTokenPage() {
     "/pondB.jpg",
     "/pondC.jpg"
   ]
-
   return (
-    <div className="min-h-screen bg-blue-100">
+    <div className="min-h-screen bg-orange-50">
       <DashboardHeader userRole="producer" />
 
       <div className="container mx-auto px-4 py-8">
@@ -214,9 +212,8 @@ export default function ViewTokenPage() {
                     <div className="space-y-4">
                       {token.transactions.map((transaction, index) => (
                         <div key={index} className="flex items-center justify-between p-4 border rounded-lg">
-                          <div className="flex items-center space-x-3">
-                            <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                              <Users className="h-5 w-5 text-blue-600" />
+                          <div className="flex items-center space-x-3">                            <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                              <Users className="h-5 w-5 text-orange-600" />
                             </div>
                             <div>
                               <div className="font-medium">{transaction.investor}</div>
@@ -247,13 +244,12 @@ export default function ViewTokenPage() {
                           <span className="text-sm text-gray-600">Current</span>
                           <span className="font-semibold">{token.iotData.temperature}°C</span>
                         </div>
-                        <div className="flex justify-between">
-                          <span className="text-sm text-gray-600">Optimal Range</span>
+                        <div className="flex justify-between">                        <span className="text-sm text-gray-600">Optimal Range</span>
                           <span className="text-sm">26-30°C</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-sm text-gray-600">Status</span>
-                          <Badge variant="outline" className="text-xs bg-blue-200">
+                          <Badge variant="outline" className="text-xs bg-orange-200">
                             Normal
                           </Badge>
                         </div>
@@ -294,14 +290,13 @@ export default function ViewTokenPage() {
                         <div className="flex justify-between">
                           <span className="text-sm text-gray-600">Current</span>
                           <span className="font-semibold">{token.iotData.salinity} ppt</span>
-                        </div>
-                        <div className="flex justify-between">
+                        </div>                        <div className="flex justify-between">
                           <span className="text-sm text-gray-600">Optimal Range</span>
                           <span className="text-sm">0-0.5 ppt</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-sm text-gray-600">Status</span>
-                          <Badge variant="outline" className="text-xs bg-blue-200">
+                          <Badge variant="outline" className="text-xs bg-orange-200">
                             Normal
                           </Badge>
                         </div>
@@ -318,14 +313,13 @@ export default function ViewTokenPage() {
                         <div className="flex justify-between">
                           <span className="text-sm text-gray-600">Current</span>
                           <span className="font-semibold">{token.iotData.ph}</span>
-                        </div>
-                        <div className="flex justify-between">
+                        </div>                        <div className="flex justify-between">
                           <span className="text-sm text-gray-600">Optimal Range</span>
                           <span className="text-sm">6.5-8.5</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-sm text-gray-600">Status</span>
-                          <Badge variant="outline" className="text-xs bg-blue-200">
+                          <Badge variant="outline" className="text-xs bg-orange-200">
                             Normal
                           </Badge>
                         </div>
@@ -414,10 +408,9 @@ export default function ViewTokenPage() {
                     <CardTitle>Documents & Reports</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-3">
-                      {token.documents.map((doc, index) => (
+                    <div className="space-y-3">                      {token.documents.map((doc, index) => (
                         <div key={index} className="flex items-center justify-between p-3 border rounded-lg">                          <div className="flex items-center space-x-3">
-                            <FileText className="h-5 w-5 text-blue-600" />
+                            <FileText className="h-5 w-5 text-orange-600" />
                             <div>
                               <div className="font-medium">{doc.name}</div>
                               <div className="text-sm text-gray-600">{doc.size}</div>
@@ -511,10 +504,9 @@ export default function ViewTokenPage() {
                   <div className="grid grid-cols-4 gap-2">
                     {images.map((image, index) => (
                       <button
-                        key={index}
-                        onClick={() => setSelectedImage(index)}
+                        key={index}                        onClick={() => setSelectedImage(index)}
                         className={`aspect-square rounded-lg overflow-hidden border-2 ${
-                          selectedImage === index ? "border-blue-500" : "border-gray-200"
+                          selectedImage === index ? "border-orange-500" : "border-gray-200"
                         }`}
                       >
                         <img

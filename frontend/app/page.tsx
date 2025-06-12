@@ -1,55 +1,57 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Fish, Waves, TrendingUp, Shield, Users, Leaf, Star, CheckCircle, ArrowRight } from "lucide-react"
+import { TrendingUp, Shield, Users, Leaf, Star, CheckCircle, ArrowRight } from "lucide-react"
+import Image from "next/image"
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
+      
       {/* Header */}
-      <header className="border-b bg-white/95 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <Waves className="h-8 w-8 text-blue-600" />
-            <span className="text-2xl font-bold text-blue-900">AquaChain</span>
+      <header className="border-b bg-white/95 backdrop-blur-sm sticky top-0 z-50 shadow-sm">        
+      <div className="container mx-auto px-4 py-4 flex items-center justify-between">          
+        <div className="flex items-center space-x-2">
+            <Image src="/shrimp.svg" alt="Shrimp" width={32} height={32} className="text-orange-600" />
+            <span className="text-2xl font-bold text-orange-900">ClawChain</span>
           </div>
           <nav className="hidden md:flex items-center space-x-8">
-            <Link href="#how-it-works" className="text-gray-600 hover:text-blue-600 transition-colors">
+            <Link href="#how-it-works" className="text-gray-600 hover:text-orange-600 transition-colors">
               How It Works
             </Link>
-            <Link href="#features" className="text-gray-600 hover:text-blue-600 transition-colors">
+            <Link href="#features" className="text-gray-600 hover:text-orange-600 transition-colors">
               Features
             </Link>
-            <Link href="#benefits" className="text-gray-600 hover:text-blue-600 transition-colors">
+            <Link href="#benefits" className="text-gray-600 hover:text-orange-600 transition-colors">
               Benefits
             </Link>
           </nav>
           <div className="flex items-center space-x-3">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-6" asChild>
+            <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-white px-6" asChild>
               <Link href="/auth">Get Started</Link>
             </Button>
           </div>
         </div>
-      </header>
+      </header>      
 
       {/* Hero Section */}
-      <section className="relative py-24 px-4 bg-gradient-to-br from-blue-50 via-white to-blue-50">
+      <section className="relative py-24 px-4 bg-gradient-to-br from-orange-50 via-white to-orange-50">
         <div className="container mx-auto">
           <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <div className="inline-flex items-center bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
               <Star className="h-4 w-4 mr-2" />
               Blockchain-Powered Seafood Sourcing
             </div>
             <h1 className="text-6xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
               Premium Lobster,
-              <span className="text-blue-600 block">Direct Connection</span>
+              <span className="text-orange-600 block">Direct Connection</span>
             </h1>          
             <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
               Connect restaurants with vetted lobster producers through blockchain tokenization. 
               Ensure superior quality, transparent sourcing, and increased revenue for all.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg" asChild>
+              <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 text-lg" asChild>
                 <Link href="/auth">
                   Start Sourcing
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -61,22 +63,22 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </section>    
 
       {/* How It Works */}
-      <section id="how-it-works" className="py-20 bg-blue-100">
+      <section id="how-it-works" className="py-20 bg-orange-100">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">How AquaChain Works</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">How ClawChain Works</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               A simple three-step process to connect restaurants with premium lobster producers
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">            
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow bg-white">
-              <CardHeader className="text-center p-8">
-                <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
-                  <Fish className="h-8 w-8 text-blue-600" />
+              <CardHeader className="text-center p-8">                
+                <div className="bg-orange-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                  <Image src="/shrimp.svg" alt="Shrimp" width={32} height={32} />
                 </div>
                 <CardTitle className="text-2xl mb-4">Producers Register</CardTitle>
                 <CardDescription className="text-gray-600 text-lg leading-relaxed">
@@ -122,10 +124,10 @@ export default function HomePage() {
               Built on cutting-edge technology to ensure trust, transparency, and quality
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">            
             <div className="text-center">
-              <div className="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-                <Shield className="h-10 w-10 text-blue-600" />
+              <div className="bg-orange-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                <Shield className="h-10 w-10 text-orange-600" />
               </div>
               <h3 className="text-2xl font-semibold mb-4">Blockchain Security</h3>
               <p className="text-gray-600 text-lg leading-relaxed">
@@ -148,10 +150,10 @@ export default function HomePage() {
       </section>
 
       {/* Benefits Section */}
-      <section id="benefits" className="py-20 bg-gray-50">
+      <section id="benefits" className="py-20 bg-orange-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose AquaChain?</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose ClawChain?</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Experience the benefits of direct, transparent seafood sourcing
             </p>
@@ -199,19 +201,18 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
-
+      </section>      
+      
       {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
+      <section className="py-20 bg-orange-500">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold text-white mb-6">
             Ready to Transform Your Seafood Sourcing?
           </h2>
-          <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
-            Join the future of restaurant-producer connections with AquaChain's 
+          <p className="text-xl text-orange-100 mb-10 max-w-2xl mx-auto">Join the future of restaurant-producer connections with ClawChain's 
             blockchain-powered platform.
           </p>
-          <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold" asChild>
+          <Button size="lg" className="bg-white text-orange-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold" asChild>
             <Link href="/auth">
               Get Started Today
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -219,7 +220,6 @@ export default function HomePage() {
           </Button>
         </div>
       </section>
-
     </div>
   )
 }

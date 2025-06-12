@@ -1,4 +1,4 @@
-// Transaction/Activity data for AquaChain platform
+// Transaction/Activity data for ClawChain platform
 
 export interface Transaction {
   id: string
@@ -37,14 +37,13 @@ export const transactions: Transaction[] = [  {
     icon: "CheckCircle"
   },  {
     id: "txn_003",
-    type: "harvest",
-    title: "Harvest Completed",
+    type: "harvest",    title: "Harvest Completed",
     description: "Successfully harvested 2,500kg Sea Bass from Pond A1",
     amount: "₱390,000",
     timestamp: "2025-06-02T14:20:00Z",
     status: "completed",
     relatedTokenId: "AC-003",
-    icon: "Fish"
+    icon: "Shrimp"
   },
   {
     id: "txn_004",

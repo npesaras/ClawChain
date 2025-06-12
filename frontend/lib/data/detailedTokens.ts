@@ -1,4 +1,4 @@
-// Detailed token data for AquaChain platform
+// Detailed token data for ClawChain platform
 // This file contains comprehensive token information including producer details, 
 // harvest data, sustainability metrics, IoT monitoring, and transaction history
 

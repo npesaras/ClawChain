@@ -12,7 +12,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Badge } from "@/components/ui/badge"
-import { Waves, User, Settings, LogOut, Bell, Fish, TrendingUp, ShoppingCart, HelpCircle } from "lucide-react"
+import { User, Settings, LogOut, Bell, TrendingUp, ShoppingCart, HelpCircle } from "lucide-react"
+import Image from "next/image"
 
 interface DashboardHeaderProps {
   userRole?: "producer"
@@ -43,18 +44,16 @@ export function DashboardHeader({ userRole: propUserRole, forceRole }: Dashboard
     localStorage.removeItem("isAuthenticated")
     window.location.href = "/"
   }
-
   const getRoleIcon = () => {
     switch (userRole) {
       case "producer":
-        return <Fish className="h-4 w-4" />
+        return <Image src="/shrimp.svg" alt="Shrimp" width={16} height={16} />
     }
   }
-
   const getRoleColor = () => {
     switch (userRole) {
       case "producer":
-        return "bg-blue-100 text-blue-800"
+        return "bg-orange-100 text-orange-800"
       case "investor":
         return "bg-green-100 text-green-800"
       case "buyer":
@@ -64,19 +63,17 @@ export function DashboardHeader({ userRole: propUserRole, forceRole }: Dashboard
 
   return (
     <header className="border-b bg-white sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="flex items-center space-x-6">
-          <Link href="/" className="flex items-center space-x-2">
-            <Waves className="h-8 w-8 text-blue-600" />
-            <span className="text-2xl font-bold text-blue-900">AquaChain</span>
+      <div className="container mx-auto px-4 py-4 flex items-center justify-between">        <div className="flex items-center space-x-6">          <Link href="/" className="flex items-center space-x-2">
+            <Image src="/shrimp.svg" alt="Shrimp" width={32} height={32} className="text-orange-600" />
+            <span className="text-2xl font-bold text-orange-900">ClawChain</span>
           </Link>
 
           <nav className="hidden md:flex items-center space-x-6">
-            <Link href={`/dashboard/${userRole}`} className="text-gray-600 hover:text-blue-600 font-medium">
+            <Link href={`/dashboard/${userRole}`} className="text-gray-600 hover:text-orange-600 font-medium">
               Dashboard
             </Link>            {userRole === "producer" && (
               <>
-                <Link href={`/dashboard/producer/tokens`} className="text-gray-600 hover:text-blue-600">
+                <Link href={`/dashboard/producer/tokens`} className="text-gray-600 hover:text-orange-600">
                   My Tokens
                 </Link>
               </>
