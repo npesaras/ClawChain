@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -29,7 +29,13 @@ import { tokens as sharedTokens } from "@/lib/data/tokens"
 export default function MyTokensPage() {
   const [statusFilter, setStatusFilter] = useState<string>("all")
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
-    // Map shared tokens data to match the page's expected format
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  // Map shared tokens data to match the page's expected format
   // Use deterministic data mapping based on token ID to avoid hydration issues
   const tokens = sharedTokens.map((token) => {
     // Create consistent mappings based on token ID instead of array index
@@ -139,10 +145,14 @@ export default function MyTokensPage() {
     }
   }
   const filteredTokens = statusFilter === "all" ? tokens : tokens.filter((token) => token.status === statusFilter)
-
   const totalValue = tokens.reduce((sum, token) => sum + token.total, 0)
   const totalFunded = tokens.reduce((sum, token) => sum + token.funded, 0)
   const avgProgress = tokens.reduce((sum, token) => sum + token.progress, 0) / tokens.length
+
+  // Prevent hydration mismatch by not rendering until mounted
+  if (!mounted) {
+    return null
+  }
 
   return (
     <div className="min-h-screen bg-orange-50">
@@ -162,6 +172,7 @@ export default function MyTokensPage() {
             </Button>
           </div>
         </div>
+        
         {/* Summary Stats */}
         <div className="grid md:grid-cols-4 gap-6 mb-8">
           <Card>            
@@ -248,10 +259,9 @@ export default function MyTokensPage() {
                   </div>
                 </div>
               </CardHeader>
-              <CardContent>
-                {viewMode === "grid" ? (
+              <CardContent>                {viewMode === "grid" ? (
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">{filteredTokens.map((token) => (
-                      <Card key={token.id} className="hover:shadow-lg transition-shadow bg-gray-100">
+                      <Card key={token.id} className="transition-shadow bg-orange-100">
                         <CardHeader className="pb-3">
                           <div className="flex items-center justify-between">
                             <Badge className={getStatusColor(token.status)}>
@@ -329,10 +339,10 @@ export default function MyTokensPage() {
                       </Card>
                     ))}
                   </div>
-                ) : (
-                  <div className="space-y-4">
+                ) : (                  
+                <div className="space-y-4"> 
                     {filteredTokens.map((token) => (
-                      <div key={token.id} className="border rounded-lg p-6 hover:shadow-md transition-shadow bg-gray-100">                        
+                      <div key={token.id} className="border rounded-lg p-6 hover:shadow-md transition-shadow bg-orange-100">
                       <div className="flex items-center justify-between mb-4">
                           <div className="flex items-center space-x-4">                            
                             <div className="relative w-20 h-20 rounded-lg overflow-hidden bg-gray-100">
@@ -386,8 +396,8 @@ export default function MyTokensPage() {
                             <p className="text-sm text-gray-600">Risk Level</p>
                             <p className={`font-semibold ${getRiskColor(token.riskLevel)}`}>{token.riskLevel}</p>
                           </div>
-                        </div>
-                        <div className="grid md:grid-cols-2 gap-6 mb-4">
+                        </div>                        
+                        <div className="space-y-4 mb-4">
                           <div className="space-y-2">
                             <div className="flex justify-between text-sm">
                               <span>Funding Progress</span>
@@ -429,16 +439,16 @@ export default function MyTokensPage() {
             </Card>
           </TabsContent>
           
+          {/* History Tab */}
           <TabsContent value="history" className="space-y-6">
             <Card>
               <CardHeader>
                 <CardTitle>Token History</CardTitle>
                 <CardDescription>Complete timeline of your token activities</CardDescription>
               </CardHeader>
-              <CardContent>                
-                <div className="space-y-4">
+              <CardContent>                  <div className="space-y-4">
                   {tokens.slice(0, 5).map((token) => (
-                    <div key={token.id} className="flex items-center justify-between p-4 border rounded-lg bg-gray-100">
+                    <div key={token.id} className="flex items-center justify-between p-4 border rounded-lg bg-orange-100">
                       <div className="flex items-center space-x-4">
                         <div className="relative w-12 h-12 rounded-lg overflow-hidden bg-gray-100">
                           {token.image && (
