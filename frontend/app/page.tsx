@@ -1,16 +1,19 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Fish, Waves, TrendingUp, Shield, Users, Leaf, Star, CheckCircle, ArrowRight } from "lucide-react"
+import { TrendingUp, Shield, Users, Leaf, Star, CheckCircle, ArrowRight } from "lucide-react"
+import Image from "next/image"
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
+      
       {/* Header */}
-      <header className="border-b bg-white/95 backdrop-blur-sm sticky top-0 z-50 shadow-sm">        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <Waves className="h-8 w-8 text-orange-600" />
-            <span className="text-2xl font-bold text-orange-900">AquaChain</span>
+      <header className="border-b bg-white/95 backdrop-blur-sm sticky top-0 z-50 shadow-sm">        
+      <div className="container mx-auto px-4 py-4 flex items-center justify-between">          
+        <div className="flex items-center space-x-2">
+            <Image src="/shrimp.svg" alt="Shrimp" width={32} height={32} className="text-orange-600" />
+            <span className="text-2xl font-bold text-orange-900">ClawChain</span>
           </div>
           <nav className="hidden md:flex items-center space-x-8">
             <Link href="#how-it-works" className="text-gray-600 hover:text-orange-600 transition-colors">
@@ -29,7 +32,9 @@ export default function HomePage() {
             </Button>
           </div>
         </div>
-      </header>      {/* Hero Section */}
+      </header>      
+
+      {/* Hero Section */}
       <section className="relative py-24 px-4 bg-gradient-to-br from-orange-50 via-white to-orange-50">
         <div className="container mx-auto">
           <div className="text-center max-w-4xl mx-auto">
@@ -58,20 +63,20 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>      {/* How It Works */}
+      </section>      
+      {/* How It Works */}
       <section id="how-it-works" className="py-20 bg-orange-100">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">How AquaChain Works</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">How ClawChain Works</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               A simple three-step process to connect restaurants with premium lobster producers
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">            
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow bg-white">
-              <CardHeader className="text-center p-8">
-                <div className="bg-orange-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
-                  <Fish className="h-8 w-8 text-orange-600" />
+              <CardHeader className="text-center p-8">                <div className="bg-orange-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                  <Image src="/shrimp.svg" alt="Shrimp" width={32} height={32} />
                 </div>
                 <CardTitle className="text-2xl mb-4">Producers Register</CardTitle>
                 <CardDescription className="text-gray-600 text-lg leading-relaxed">
@@ -142,10 +147,10 @@ export default function HomePage() {
       </section>
 
       {/* Benefits Section */}
-      <section id="benefits" className="py-20 bg-gray-50">
+      <section id="benefits" className="py-20 bg-orange-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose AquaChain?</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose ClawChain?</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Experience the benefits of direct, transparent seafood sourcing
             </p>
@@ -193,14 +198,15 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>      {/* CTA Section */}
-      <section className="py-20 bg-orange-600">
+      </section>      
+      
+      {/* CTA Section */}
+      <section className="py-20 bg-orange-500">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold text-white mb-6">
             Ready to Transform Your Seafood Sourcing?
           </h2>
-          <p className="text-xl text-orange-100 mb-10 max-w-2xl mx-auto">
-            Join the future of restaurant-producer connections with AquaChain's 
+          <p className="text-xl text-orange-100 mb-10 max-w-2xl mx-auto">Join the future of restaurant-producer connections with ClawChain's 
             blockchain-powered platform.
           </p>
           <Button size="lg" className="bg-white text-orange-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold" asChild>
@@ -211,7 +217,6 @@ export default function HomePage() {
           </Button>
         </div>
       </section>
-
     </div>
   )
 }

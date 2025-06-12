@@ -12,16 +12,11 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
 // Import icons
 import {
-
-  BarChart3,
   Plus,
   Eye,
   Activity,
-  Users,
   Grid3X3,
-  List,
-  CheckCircle,
-  ArrowUpRight,
+  List
 } from "lucide-react"
 import { DashboardHeader } from "@/components/dashboard-header"
 

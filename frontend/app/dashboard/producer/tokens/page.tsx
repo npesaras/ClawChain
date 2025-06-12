@@ -11,7 +11,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import {
-  Fish,
   Calendar,
   TrendingUp,
   BarChart3,
@@ -159,10 +158,9 @@ export default function MyTokensPage() {
         </div>
         {/* Summary Stats */}
         <div className="grid md:grid-cols-4 gap-6 mb-8">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <Card>            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Tokens</CardTitle>
-              <Fish className="h-4 w-4 text-muted-foreground" />
+              <Image src="/shrimp.svg" alt="Shrimp" width={16} height={16} className="text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{tokens.length}</div>

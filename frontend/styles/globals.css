@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 24 95% 53%; /* Deep Orange for lobster theme */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 24 90% 95%; /* Light orange accent */
+    --accent-foreground: 24 95% 25%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 24 95% 53%; /* Orange ring to match primary */
+    --chart-1: 24 95% 53%; /* Orange */
+    --chart-2: 16 85% 55%; /* Red-orange */
+    --chart-3: 32 85% 50%; /* Yellow-orange */
+    --chart-4: 12 80% 45%; /* Dark orange */
+    --chart-5: 28 90% 60%; /* Light orange */
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 24 95% 53%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 24 90% 95%;
+    --sidebar-accent-foreground: 24 95% 25%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 24 95% 53%;
+  }
+  
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 24 95% 53%; /* Orange for dark mode */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 24 50% 20%; /* Dark orange accent */
+    --accent-foreground: 24 95% 85%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 24 95% 53%; /* Orange ring */
+    --chart-1: 24 95% 53%; /* Orange */
+    --chart-2: 16 85% 55%; /* Red-orange */
+    --chart-3: 32 85% 50%; /* Yellow-orange */
+    --chart-4: 12 80% 45%; /* Dark orange */
+    --chart-5: 28 90% 60%; /* Light orange */
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 24 95% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 24 30% 25%;
+    --sidebar-accent-foreground: 24 95% 85%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 24 95% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .badge-ready-soon {
+    @apply bg-orange-500 hover:bg-orange-600 text-white border-orange-500;
+  }
+  
+  .badge-completed {
+    @apply bg-green-500 hover:bg-green-600 text-white border-green-500;
+  }
+  
+  .badge-pending {
+    @apply bg-yellow-500 hover:bg-yellow-600 text-white border-yellow-500;
+  }
+}
