@@ -1,4 +1,4 @@
-// Detailed token data for TidalFi platform
+// Detailed token data for AquaChain platform
 // This file contains comprehensive token information including producer details, 
 // harvest data, sustainability metrics, IoT monitoring, and transaction history
 
@@ -99,7 +99,7 @@ export interface DetailedToken {
 
 export const detailedTokens: DetailedToken[] = [
   {
-    id: "TF-001",
+    id: "AC-001",
     species: "Atlantic Salmon",
     producer: {
       name: "Nordic Aqua Farm",
@@ -210,10 +210,9 @@ export const detailedTokens: DetailedToken[] = [
       { name: "Sustainability Report Q4 2023", type: "PDF", size: "2.4 MB" },
       { name: "Health Inspection Certificate", type: "PDF", size: "1.1 MB" },
       { name: "ASC Certification", type: "PDF", size: "856 KB" },
-    ],
-  },
+    ],  },
   {
-    id: "TF-002",
+    id: "AC-002",
     species: "Rainbow Trout",
     producer: {
       name: "Mountain Stream Farms",
@@ -310,10 +309,9 @@ export const detailedTokens: DetailedToken[] = [
       { name: "Organic Certification", type: "PDF", size: "1.8 MB" },
       { name: "Water Quality Report", type: "PDF", size: "980 KB" },
       { name: "Growth Progress Report", type: "PDF", size: "1.2 MB" },
-    ],
-  },
+    ],  },
   {
-    id: "TF-003",
+    id: "AC-003",
     species: "Sea Bass",
     producer: {
       name: "Mediterranean Aqua",

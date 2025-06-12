@@ -4,7 +4,7 @@
 import { DetailedToken } from "./detailedTokens"
 
 export const staticToken: DetailedToken = {
-  id: "TF-001",
+  id: "AC-001",
   species: "Tilapia",
   producer: {
     name: "Philippine Aqua Farm",

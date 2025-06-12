@@ -11,7 +11,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Waves className="h-8 w-8 text-blue-600" />
-            <span className="text-2xl font-bold text-blue-900">TidalChain</span>
+            <span className="text-2xl font-bold text-blue-900">AquaChain</span>
           </div>
           <nav className="hidden md:flex items-center space-x-6">
             <Link href="#how-it-works" className="text-gray-600 hover:text-blue-600">
@@ -46,7 +46,7 @@ export default function HomePage() {
       {/* How It Works */}
       <section id="how-it-works" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">How TidalChain Works</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">How AquaChain Works</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <Card>
               <CardHeader>

@@ -266,54 +266,55 @@ export default function ProducerDashboard() {
             <TabsTrigger value="harvests">My Harvests</TabsTrigger>
             <TabsTrigger value="revenue">Revenue</TabsTrigger>
             <TabsTrigger value="performance">Token Performance</TabsTrigger>
-          </TabsList>          <TabsContent value="overview" className="space-y-6">            <div className="grid lg:grid-cols-2 gap-8">
-              {/* Recent Tokens */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center justify-between">
-                    <span className="flex items-center">
-                      Recent Tokens
-                    </span>
-                    <Button variant="outline" size="sm" asChild>
-                      <Link href="#harvests">
-                        <Eye className="h-4 w-4 mr-2" />
-                        View All
+          </TabsList>          
+          <TabsContent value="overview" className="space-y-6">
+            {/* Recent Tokens */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center justify-between">
+                  <span className="flex items-center">
+                    Recent Tokens
+                  </span>
+                  <Button variant="outline" size="sm" asChild>
+                    <Link href="#harvests">
+                      <Eye className="h-4 w-4 mr-2" />
+                      View All
+                    </Link>
+                  </Button>
+                </CardTitle>
+                <CardDescription>Latest tokenized assets</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {recentTokens.map((token) => (
+                  <div key={token.id} className="flex items-center justify-between p-3 bg-gray-200 rounded-lg">
+                    <div className="flex items-center space-x-3">
+                      <div>
+                        <p className="font-medium">{token.species}</p>
+                        <p className="text-sm text-gray-600">{token.id} • {token.quantity}</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-sm font-medium">{token.total}</p>
+                      <div className="flex items-center space-x-2">
+                        <Progress value={token.progress} className="h-1 w-16" />
+                        <span className="text-xs text-gray-600">{token.progress}%</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+                
+                {recentTokens.length === 0 && (                  <div className="text-center py-8">
+                    <p className="text-gray-600 mb-4">No tokens created yet</p>
+                    <Button asChild>
+                      <Link href="/createNewToken">
+                        <Plus className="h-4 w-4 mr-2" />
+                        Create Your First Token
                       </Link>
                     </Button>
-                  </CardTitle>
-                  <CardDescription>Latest tokenized assets</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {recentTokens.map((token) => (
-                    <div key={token.id} className="flex items-center justify-between p-3 bg-gray-200 rounded-lg">
-                      <div className="flex items-center space-x-3">
-                        <div>
-                          <p className="font-medium">{token.species}</p>
-                          <p className="text-sm text-gray-600">{token.id} • {token.quantity}</p>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-sm font-medium">{token.total}</p>
-                        <div className="flex items-center space-x-2">
-                          <Progress value={token.progress} className="h-1 w-16" />
-                          <span className="text-xs text-gray-600">{token.progress}%</span>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                  
-                  {recentTokens.length === 0 && (                    <div className="text-center py-8">
-                      <p className="text-gray-600 mb-4">No tokens created yet</p>
-                      <Button asChild>
-                        <Link href="/createNewToken">
-                          <Plus className="h-4 w-4 mr-2" />
-                          Create Your First Token
-                        </Link>
-                      </Button>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>            </div>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
 
             {/* Recent Activity */}
             <Card>

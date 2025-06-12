@@ -1,4 +1,4 @@
-// Transaction/Activity data for TidalFi platform
+// Transaction/Activity data for AquaChain platform
 
 export interface Transaction {
   id: string
@@ -13,16 +13,15 @@ export interface Transaction {
   icon: string
 }
 
-export const transactions: Transaction[] = [
-  {
+export const transactions: Transaction[] = [  {
     id: "txn_001",
     type: "investment",
     title: "New Investment Received",
-    description: "Maria Santos invested in Atlantic Salmon Token #AST-001",
+    description: "Maria Santos invested in Atlantic Salmon Token #AC-001",
     amount: "₱15,000",
     timestamp: "2025-06-03T08:30:00Z",
     status: "completed",
-    relatedTokenId: "AST-001",
+    relatedTokenId: "AC-001",
     investorName: "Maria Santos",
     icon: "TrendingUp"
   },
@@ -30,11 +29,11 @@ export const transactions: Transaction[] = [
     id: "txn_002",
     type: "funding_complete",
     title: "Token Fully Funded",
-    description: "Rainbow Trout Token #RTT-002 reached 100% funding goal",
+    description: "Rainbow Trout Token #AC-002 reached 100% funding goal",
     amount: "₱85,000",
     timestamp: "2025-06-03T07:15:00Z",
     status: "completed",
-    relatedTokenId: "RTT-002",
+    relatedTokenId: "AC-002",
     icon: "CheckCircle"
   },  {
     id: "txn_003",
@@ -44,39 +43,39 @@ export const transactions: Transaction[] = [
     amount: "₱390,000",
     timestamp: "2025-06-02T14:20:00Z",
     status: "completed",
-    relatedTokenId: "SBT-003",
+    relatedTokenId: "AC-003",
     icon: "Fish"
   },
   {
     id: "txn_004",
     type: "payment",
     title: "Investor Payment Sent",
-    description: "ROI payment distributed to 12 investors for Token #AST-001",
+    description: "ROI payment distributed to 12 investors for Token #AC-001",
     amount: "₱52,750",
     timestamp: "2025-06-02T11:45:00Z",
     status: "completed",
-    relatedTokenId: "AST-001",
+    relatedTokenId: "AC-001",
     icon: "DollarSign"
   },
   {
     id: "txn_005",
     type: "token_creation",
     title: "New Token Created",
-    description: "Arctic Char Token #ACT-005 created for Pond B2",    amount: "₱120,000",
+    description: "Arctic Char Token #AC-005 created for Pond B2",    amount: "₱120,000",
     timestamp: "2025-06-01T16:30:00Z",
     status: "completed",
-    relatedTokenId: "ACT-005",
+    relatedTokenId: "AC-005",
     icon: "Plus"
   },
   {
     id: "txn_006",
     type: "investment",
     title: "Investment Received",
-    description: "Carlos Rodriguez invested in Sea Bass Token #SBT-003",
+    description: "Carlos Rodriguez invested in Sea Bass Token #AC-003",
     amount: "₱25,000",
     timestamp: "2025-06-01T13:22:00Z",
     status: "completed",
-    relatedTokenId: "SBT-003",
+    relatedTokenId: "AC-003",
     investorName: "Carlos Rodriguez",
     icon: "TrendingUp"
   },
@@ -89,16 +88,15 @@ export const transactions: Transaction[] = [
     timestamp: "2025-05-31T10:15:00Z",
     status: "completed",
     icon: "ArrowUpRight"
-  },
-  {
+  },  {
     id: "txn_008",
     type: "investment",
     title: "Investment Received",
-    description: "Ana Dela Cruz invested in Rainbow Trout Token #RTT-002",
+    description: "Ana Dela Cruz invested in Rainbow Trout Token #AC-002",
     amount: "₱18,500",
     timestamp: "2025-05-31T09:08:00Z",
     status: "completed",
-    relatedTokenId: "RTT-002",
+    relatedTokenId: "AC-002",
     investorName: "Ana Dela Cruz",
     icon: "TrendingUp"
   },
@@ -106,11 +104,11 @@ export const transactions: Transaction[] = [
     id: "txn_009",
     type: "payment",
     title: "Investor Payment Pending",
-    description: "Processing ROI payment for Token #RTT-001 investors",
+    description: "Processing ROI payment for Token #AC-001 investors",
     amount: "₱43,200",
     timestamp: "2025-05-30T15:45:00Z",
     status: "pending",
-    relatedTokenId: "RTT-001",
+    relatedTokenId: "AC-001",
     icon: "Clock"
   },
   {
@@ -120,7 +118,7 @@ export const transactions: Transaction[] = [
     description: "Atlantic Salmon harvest scheduled for Pond A3",    amount: "₱320,000",
     timestamp: "2025-05-30T08:00:00Z",
     status: "pending",
-    relatedTokenId: "AST-004",
+    relatedTokenId: "AC-004",
     icon: "Calendar"
   }
 ]

@@ -32,7 +32,7 @@ export default function AuthPage() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
             <Waves className="h-8 w-8 text-blue-600" />
-            <span className="text-2xl font-bold text-blue-900">TidalChain</span>
+            <span className="text-2xl font-bold text-blue-900">AquaChain</span>
           </Link>
           <Button variant="outline" asChild>
             <Link href="/">Back to Home</Link>
@@ -45,7 +45,7 @@ export default function AuthPage() {
           <div className="text-center mb-8">
             <h1 className="text-4xl font-semibold text-gray-900 mb-4">
               Join 
-              <span className="font-bold text-blue-900">TidalChain</span>
+              <span className="font-bold text-blue-900">AquaChain</span>
             </h1>
             <p className="text-xl text-gray-600">Choose your role and start your sustainable aquaculture journey</p>
           </div>

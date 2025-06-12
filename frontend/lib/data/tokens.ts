@@ -13,7 +13,7 @@ export interface Token {
 
 export const tokens: Token[] = [
   {
-    id: "TF-001",
+    id: "AC-001",
     species: "Tilapia",
     quantity: "2,500 kg",
     harvestDate: "2024-03-15",
@@ -25,7 +25,7 @@ export const tokens: Token[] = [
     image: "/fishTilapia.jpg",
   },
   {
-    id: "TF-002",
+    id: "AC-002",
     species: "Milkfish",
     quantity: "1,800 kg",
     harvestDate: "2024-02-28",
@@ -37,7 +37,7 @@ export const tokens: Token[] = [
     image: "/fishMilkfish.jpg",
   },
   {
-    id: "TF-003",
+    id: "AC-003",
     species: "Pompano",
     quantity: "3,200 kg",
     harvestDate: "2024-04-20",

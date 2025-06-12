@@ -68,7 +68,7 @@ export function DashboardHeader({ userRole: propUserRole, forceRole }: Dashboard
         <div className="flex items-center space-x-6">
           <Link href="/" className="flex items-center space-x-2">
             <Waves className="h-8 w-8 text-blue-600" />
-            <span className="text-2xl font-bold text-blue-900">TidalChain</span>
+            <span className="text-2xl font-bold text-blue-900">AquaChain</span>
           </Link>
 
           <nav className="hidden md:flex items-center space-x-6">
