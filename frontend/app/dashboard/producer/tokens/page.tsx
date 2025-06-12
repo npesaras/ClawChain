@@ -29,27 +29,72 @@ import { tokens as sharedTokens } from "@/lib/data/tokens"
 export default function MyTokensPage() {
   const [statusFilter, setStatusFilter] = useState<string>("all")
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
-  
-  // Map shared tokens data to match the page's expected format
-  const tokens = sharedTokens.map((token, index) => ({
-    id: token.id,
-    species: token.species,
-    pond: index === 0 ? "Pond A" : index === 1 ? "Pond B" : "Pond C",
-    location: index === 0 ? "North Sector" : index === 1 ? "East Sector" : "South Sector",
-    quantity: token.quantity,
-    harvestDate: token.harvestDate,
-    progress: token.progress,
-    status: token.status,
-    funded: parseInt(token.funded.replace(/[₱,]/g, '')),
-    total: parseInt(token.total.replace(/[₱,]/g, '')),
-    daysRemaining: token.daysRemaining,
-    investors: index === 0 ? 8 : index === 1 ? 12 : 15, // Mock data for additional fields
-    avgReturn: index === 0 ? "12.5%" : index === 1 ? "15.2%" : "10.8%",
-    riskLevel: index === 0 ? "Low" : index === 1 ? "Low" : "Medium",
-    createdDate: index === 0 ? "2024-01-15" : index === 1 ? "2024-01-08" : "2024-02-01",
-    lastUpdate: index === 0 ? "2 hours ago" : index === 1 ? "1 hour ago" : "3 hours ago",
-    image: token.image,
-  }))
+    // Map shared tokens data to match the page's expected format
+  // Use deterministic data mapping based on token ID to avoid hydration issues
+  const tokens = sharedTokens.map((token) => {
+    // Create consistent mappings based on token ID instead of array index
+    const pondMapping: { [key: string]: string } = {
+      "AC-001": "Pond A",
+      "AC-002": "Pond B", 
+      "AC-003": "Pond C"
+    }
+    
+    const locationMapping: { [key: string]: string } = {
+      "AC-001": "North Sector",
+      "AC-002": "East Sector",
+      "AC-003": "South Sector"
+    }
+    
+    const investorMapping: { [key: string]: number } = {
+      "AC-001": 8,
+      "AC-002": 12,
+      "AC-003": 15
+    }
+    
+    const returnMapping: { [key: string]: string } = {
+      "AC-001": "12.5%",
+      "AC-002": "15.2%",
+      "AC-003": "10.8%"
+    }
+    
+    const riskMapping: { [key: string]: string } = {
+      "AC-001": "Low",
+      "AC-002": "Low",
+      "AC-003": "Medium"
+    }
+    
+    const createdDateMapping: { [key: string]: string } = {
+      "AC-001": "2024-01-15",
+      "AC-002": "2024-01-08",
+      "AC-003": "2024-02-01"
+    }
+    
+    const lastUpdateMapping: { [key: string]: string } = {
+      "AC-001": "2 hours ago",
+      "AC-002": "1 hour ago",
+      "AC-003": "3 hours ago"
+    }
+    
+    return {
+      id: token.id,
+      species: token.species,
+      pond: pondMapping[token.id] || "Pond A",
+      location: locationMapping[token.id] || "North Sector",
+      quantity: token.quantity,
+      harvestDate: token.harvestDate,
+      progress: token.progress,
+      status: token.status,
+      funded: parseInt(token.funded.replace(/[₱,]/g, '')),
+      total: parseInt(token.total.replace(/[₱,]/g, '')),
+      daysRemaining: token.daysRemaining,
+      investors: investorMapping[token.id] || 8,
+      avgReturn: returnMapping[token.id] || "12.5%",
+      riskLevel: riskMapping[token.id] || "Low",
+      createdDate: createdDateMapping[token.id] || "2024-01-15",
+      lastUpdate: lastUpdateMapping[token.id] || "2 hours ago",
+      image: token.image,
+    }
+  })
 
   const getStatusColor = (status: string) => {
     switch (status) {

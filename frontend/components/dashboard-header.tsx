@@ -22,16 +22,22 @@ interface DashboardHeaderProps {
 
 export function DashboardHeader({ userRole: propUserRole, forceRole }: DashboardHeaderProps) {
   const [userRole, setUserRole] = useState<"producer" | "investor" | "buyer">("producer")
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     // Force role takes precedence, then prop, then localStorage
     if (forceRole) {
       setUserRole(forceRole)
-      localStorage.setItem("userRole", forceRole)
+      if (typeof window !== 'undefined') {
+        localStorage.setItem("userRole", forceRole)
+      }
     } else if (propUserRole) {
       setUserRole(propUserRole)
-      localStorage.setItem("userRole", propUserRole)
-    } else {
+      if (typeof window !== 'undefined') {
+        localStorage.setItem("userRole", propUserRole)
+      }
+    } else if (typeof window !== 'undefined') {
       const storedRole = localStorage.getItem("userRole") as "producer" | "investor" | "buyer"
       if (storedRole) {
         setUserRole(storedRole)
@@ -40,9 +46,11 @@ export function DashboardHeader({ userRole: propUserRole, forceRole }: Dashboard
   }, [propUserRole, forceRole])
 
   const handleLogout = () => {
-    localStorage.removeItem("userRole")
-    localStorage.removeItem("isAuthenticated")
-    window.location.href = "/"
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem("userRole")
+      localStorage.removeItem("isAuthenticated")
+      window.location.href = "/"
+    }
   }
   const getRoleIcon = () => {
     switch (userRole) {
