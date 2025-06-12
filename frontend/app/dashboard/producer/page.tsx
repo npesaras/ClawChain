@@ -20,8 +20,6 @@ import {
 } from "lucide-react"
 import { DashboardHeader } from "@/components/dashboard-header"
 
-// Import shared data
-// Removed pond imports
 
 import { 
   tokens, 
@@ -117,7 +115,8 @@ export default function ProducerDashboard() {
               <div className="flex justify-between text-sm">
                 <span>Growth Progress</span>
                 <span>{token.progress}%</span>
-              </div>              <Progress value={token.progress} className="h-2" />
+              </div>              
+              <Progress value={token.progress} className="h-2" />
             </div>
             <div className="flex space-x-2">
               <Button variant="outline" size="sm" className="flex-1 bg-gray-100" asChild>
@@ -169,7 +168,8 @@ export default function ProducerDashboard() {
                 <div className="text-center">
                   <p className="text-sm text-gray-600">Harvest Date</p>
                   <p className="font-medium">{token.harvestDate}</p>
-                </div>                <Badge variant={token.status === "Ready Soon" ? "destructive" : "secondary"}>
+                </div>                
+                <Badge variant={token.status === "Ready Soon" ? "destructive" : "secondary"}>
                   {token.status}
                 </Badge>
                 <div className="flex space-x-2"><Button variant="outline" size="sm" asChild>
@@ -295,7 +295,8 @@ export default function ProducerDashboard() {
                   </div>
                 ))}
                 
-                {recentTokens.length === 0 && (                  <div className="text-center py-8">
+                {recentTokens.length === 0 && (                  
+                  <div className="text-center py-8">
                     <p className="text-gray-600 mb-4">No tokens created yet</p>
                     <Button asChild>
                       <Link href="/createNewToken">
@@ -360,7 +361,8 @@ export default function ProducerDashboard() {
                   )
                 })}
                 
-                {recentTransactions.length === 0 && (                  <div className="text-center py-8">
+                {recentTransactions.length === 0 && (                  
+                  <div className="text-center py-8">
                     <Activity className="h-16 w-16 mx-auto text-muted-foreground/40 mb-4" />
                     <p className="text-muted-foreground mb-4">No recent activity</p>
                     <Button asChild>

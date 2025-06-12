@@ -12,9 +12,6 @@ import { Separator } from "@/components/ui/separator"
 import {
   MapPin,
   Calendar,
-  Thermometer,
-  Droplets,
-  Activity,
   Star,
   Camera,
   FileText,
@@ -22,9 +19,7 @@ import {
   Share2,
   AlertTriangle,
   CheckCircle,
-  BarChart3,
   Edit,
-  Settings,
   Users,
 } from "lucide-react"
 import { DashboardHeader } from "@/components/dashboard-header"
@@ -54,16 +49,10 @@ export default function ViewTokenPage() {
               Back to Dashboard
             </Link>
           </Button>
-          <div className="flex items-center space-x-2">
-            <Button variant="outline" size="sm">
-              <Share2 className="h-4 w-4 mr-2" />
-              Share
-            </Button>
-            <Button variant="outline" size="sm">
-              <Edit className="h-4 w-4 mr-2" />
-              Edit Token
-            </Button>
-          </div>
+          <Button variant="outline" size="sm">
+            <Edit className="h-4 w-4 mr-2" />
+            Edit Token
+          </Button>
         </div>
 
         {/* Main Content */}
@@ -212,7 +201,8 @@ export default function ViewTokenPage() {
                     <div className="space-y-4">
                       {token.transactions.map((transaction, index) => (
                         <div key={index} className="flex items-center justify-between p-4 border rounded-lg">
-                          <div className="flex items-center space-x-3">                            <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                          <div className="flex items-center space-x-3">                            
+                            <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
                               <Users className="h-5 w-5 text-orange-600" />
                             </div>
                             <div>
@@ -232,7 +222,8 @@ export default function ViewTokenPage() {
               </TabsContent>
 
               <TabsContent value="iot" className="space-y-4">
-                <div className="grid md:grid-cols-2 gap-4">                  <Card>
+                <div className="grid md:grid-cols-2 gap-4">                  
+                  <Card>
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
                         Temperature
@@ -244,7 +235,8 @@ export default function ViewTokenPage() {
                           <span className="text-sm text-gray-600">Current</span>
                           <span className="font-semibold">{token.iotData.temperature}°C</span>
                         </div>
-                        <div className="flex justify-between">                        <span className="text-sm text-gray-600">Optimal Range</span>
+                        <div className="flex justify-between">                        
+                          <span className="text-sm text-gray-600">Optimal Range</span>
                           <span className="text-sm">26-30°C</span>
                         </div>
                         <div className="flex justify-between">
@@ -255,7 +247,8 @@ export default function ViewTokenPage() {
                         </div>
                       </div>
                     </CardContent>
-                  </Card>                  <Card>
+                  </Card>                  
+                  <Card>
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
                         Oxygen Level
@@ -279,7 +272,8 @@ export default function ViewTokenPage() {
                         </div>
                       </div>
                     </CardContent>
-                  </Card>                  <Card>
+                  </Card>                  
+                  <Card>
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
                         Salinity
@@ -290,7 +284,8 @@ export default function ViewTokenPage() {
                         <div className="flex justify-between">
                           <span className="text-sm text-gray-600">Current</span>
                           <span className="font-semibold">{token.iotData.salinity} ppt</span>
-                        </div>                        <div className="flex justify-between">
+                        </div>                        
+                        <div className="flex justify-between">
                           <span className="text-sm text-gray-600">Optimal Range</span>
                           <span className="text-sm">0-0.5 ppt</span>
                         </div>
@@ -302,7 +297,8 @@ export default function ViewTokenPage() {
                         </div>
                       </div>
                     </CardContent>
-                  </Card>                  <Card>
+                  </Card>                  
+                  <Card>
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
                         pH Level
@@ -313,7 +309,8 @@ export default function ViewTokenPage() {
                         <div className="flex justify-between">
                           <span className="text-sm text-gray-600">Current</span>
                           <span className="font-semibold">{token.iotData.ph}</span>
-                        </div>                        <div className="flex justify-between">
+                        </div>                        
+                        <div className="flex justify-between">
                           <span className="text-sm text-gray-600">Optimal Range</span>
                           <span className="text-sm">6.5-8.5</span>
                         </div>
@@ -408,7 +405,7 @@ export default function ViewTokenPage() {
                     <CardTitle>Documents & Reports</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-3">                      {token.documents.map((doc, index) => (
+                    <div className="space-y-3">{token.documents.map((doc, index) => (
                         <div key={index} className="flex items-center justify-between p-3 border rounded-lg">                          <div className="flex items-center space-x-3">
                             <FileText className="h-5 w-5 text-orange-600" />
                             <div>
@@ -492,7 +489,8 @@ export default function ViewTokenPage() {
                   <Camera className="h-5 w-5" />
                   Photos
                 </CardTitle>
-              </CardHeader>              <CardContent>
+              </CardHeader>              
+              <CardContent>
                 <div className="space-y-3">
                   <div className="aspect-video rounded-lg overflow-hidden">
                     <img
@@ -504,7 +502,7 @@ export default function ViewTokenPage() {
                   <div className="grid grid-cols-4 gap-2">
                     {images.map((image, index) => (
                       <button
-                        key={index}                        onClick={() => setSelectedImage(index)}
+                        key={index} onClick={() => setSelectedImage(index)}
                         className={`aspect-square rounded-lg overflow-hidden border-2 ${
                           selectedImage === index ? "border-orange-500" : "border-gray-200"
                         }`}

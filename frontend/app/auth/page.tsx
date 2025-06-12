@@ -23,7 +23,8 @@ export default function AuthPage() {
     <div className="min-h-screen bg-orange-50">
       {/* Header */}
       <header className="border-b bg-white/80 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">          <Link href="/" className="flex items-center space-x-2">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">          
+          <Link href="/" className="flex items-center space-x-2">
             <Image src="/shrimp.svg" alt="Shrimp" width={32} height={32} className="text-orange-600" />
             <span className="text-2xl font-bold text-orange-900">ClawChain</span>
           </Link><Button variant="outline" asChild>
@@ -34,7 +35,8 @@ export default function AuthPage() {
       
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-8">            <h1 className="text-4xl font-semibold text-gray-900 mb-4">
+          <div className="text-center mb-8">            
+            <h1 className="text-4xl font-semibold text-gray-900 mb-4">
               Join <span className="font-bold text-orange-900">ClawChain</span>
             </h1>
             <p className="text-xl text-gray-600">Choose your role and start your sustainable lobster sourcing journey</p>
@@ -73,7 +75,7 @@ export default function AuthPage() {
               </div>
               <Button onClick={() => handleInternetIdentityLogin("producer")} className="w-full" size="lg">
                 <Shield className="h-4 w-4 mr-2" />
-                Continue with Internet Identity
+                Connect with your Wallet
                 <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
             </CardContent>
