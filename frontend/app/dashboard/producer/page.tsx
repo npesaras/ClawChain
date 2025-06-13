@@ -14,54 +14,28 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import {
   Plus,
   Eye,
-  Activity,
   Grid3X3,
   List
 } from "lucide-react"
 import { DashboardHeader } from "@/components/dashboard-header"
 
-
 import { 
   tokens, 
   getActiveTokensCount, 
-  getTotalTokenValue, 
   getTokensByStatus 
 } from "@/lib/data/tokens"
 
-import { 
-  transactions, 
-  getRecentTransactions, 
-  formatTransactionTime,
-  type Transaction
-} from "@/lib/data/transactions"
-
-import { 
-  getSpeciesRevenue, 
-  formatCurrency,
-  type SpeciesRevenue
-} from "@/lib/data/species"
-
 export default function ProducerDashboard() {
-  const [timeRange, setTimeRange] = useState("7d")
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
   // Calculate dashboard stats using shared data
-  // Removed pond calculations
   const activeTokens = getActiveTokensCount()
-  const totalValue = getTotalTokenValue()
 
   // Get recent tokens (last 3)
   const recentTokens = tokens.slice(-3).reverse()
 
-  // Get recent transactions (last 5)
-  const recentTransactions = getRecentTransactions(5)
-
-  // Get species revenue data
-  const speciesRevenueData = getSpeciesRevenue()
   // Get tokens by status
   const readySoonTokens = getTokensByStatus("Ready Soon")
-  const growingTokens = getTokensByStatus("Growing")
 
-  // Removed pond utilization calculations
   const renderTokenGridView = () => (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {tokens.map((token) => (
