@@ -8,12 +8,11 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Checkbox } from "@/components/ui/checkbox"
 import { ArrowLeft, DollarSign, Leaf, Camera, Upload, CheckCircle } from "lucide-react"
 import { DashboardHeader } from "@/components/dashboard-header"
-import Image from "next/image"
+
 
 export default function TokenizePage() {
   const [currentStep, setCurrentStep] = useState(1)
@@ -70,7 +69,7 @@ export default function TokenizePage() {
           </div>
 
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">Create Fish Harvest Token</h1>
+            <h1 className="text-3xl font-bold text-gray-900 mb-4">Create Lobster Harvest Token</h1>
             <p className="text-gray-600">Tokenize your sustainable lobster harvest to access global markets</p>
           </div>
 
@@ -222,7 +221,7 @@ export default function TokenizePage() {
                     <Card>
                       <CardHeader>
                         <CardTitle>Farm Images</CardTitle>
-                        <CardDescription>Upload photos of your farm and fish</CardDescription>
+                        <CardDescription>Upload photos of your farm and lobsters</CardDescription>
                       </CardHeader>
                       <CardContent>
                         <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
