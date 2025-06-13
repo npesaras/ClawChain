@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Progress } from "@/components/ui/progress"
 import { Checkbox } from "@/components/ui/checkbox"
-import { ArrowLeft, DollarSign, Leaf, Camera, Upload, CheckCircle } from "lucide-react"
+import { ArrowLeft, Leaf, Upload, CheckCircle } from "lucide-react"
 import { DashboardHeader } from "@/components/dashboard-header"
 
 
