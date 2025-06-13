@@ -1,6 +1,7 @@
 export interface Token {
   id: string
   species: string
+  scientificName: string
   quantity: string
   harvestDate: string
   progress: number
@@ -14,7 +15,8 @@ export interface Token {
 export const tokens: Token[] = [
   {
     id: "AC-001",
-    species: "Tilapia",
+    species: "Banagan",
+    scientificName: "Panulirus longipes",
     quantity: "2,500 kg",
     harvestDate: "2024-03-15",
     progress: 75,
@@ -26,7 +28,8 @@ export const tokens: Token[] = [
   },
   {
     id: "AC-002",
-    species: "Milkfish",
+    species: "Udang",
+    scientificName: "Panulirus penicillatus",
     quantity: "1,800 kg",
     harvestDate: "2024-02-28",
     progress: 90,
@@ -38,7 +41,8 @@ export const tokens: Token[] = [
   },
   {
     id: "AC-003",
-    species: "Pompano",
+    species: "Spiny Lobster",
+    scientificName: "Panulirus spp.",
     quantity: "3,200 kg",
     harvestDate: "2024-04-20",
     progress: 45,

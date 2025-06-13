@@ -77,14 +77,14 @@ export default function TokenizePage() {
           <Card>
             <CardContent className="p-8">
               {currentStep === 1 && (
-                <div className="space-y-6">
-                  <div className="text-center mb-6">
+                <div className="space-y-6">                  
+                <div className="text-center mb-6">
                     <h2 className="text-2xl font-bold">Harvest Information</h2>
-                    <p className="text-gray-600">Tell us about your fish harvest</p>
+                    <p className="text-gray-600">Tell us about your lobster harvest</p>
                   </div>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="species">Fish Species *</Label>
+                      <Label htmlFor="species">Lobster Species *</Label>
                       <Select
                         value={formData.species}
                         onValueChange={(value) => setFormData({ ...formData, species: value })}
@@ -93,11 +93,9 @@ export default function TokenizePage() {
                           <SelectValue placeholder="Select species" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="atlantic-salmon">Atlantic Salmon</SelectItem>
-                          <SelectItem value="rainbow-trout">Rainbow Trout</SelectItem>
-                          <SelectItem value="sea-bass">Sea Bass</SelectItem>
-                          <SelectItem value="sea-bream">Sea Bream</SelectItem>
-                          <SelectItem value="arctic-char">Arctic Char</SelectItem>
+                          <SelectItem value="banagan">Banagan (Panulirus longipes)</SelectItem>
+                          <SelectItem value="udang">Udang (Panulirus penicillatus)</SelectItem>
+                          <SelectItem value="spiny-lobster">Spiny Lobster (Panulirus spp.)</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -149,12 +147,12 @@ export default function TokenizePage() {
                           : "0"}
                       </div>
                     </div>
-                  </div>
+                  </div>                  
                   <div className="space-y-2">
                     <Label htmlFor="description">Harvest Description</Label>
                     <Textarea
                       id="description"
-                      placeholder="Describe your fish, farming methods, and what makes this harvest special..."
+                      placeholder="Describe your lobster, farming methods, and what makes this harvest special..."
                       value={formData.description}
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                       rows={4}

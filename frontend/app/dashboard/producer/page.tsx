@@ -310,82 +310,15 @@ export default function ProducerDashboard() {
               </CardContent>
             </Card>
 
-            {/* Recent Activity */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center justify-between">
-                  <span className="flex items-center">
-                    Recent Activity
-                  </span>
-                  <Button variant="outline" size="sm">
-                    <Eye className="h-4 w-4 mr-2" />
-                    View All
-                  </Button>
-                </CardTitle>
-                <CardDescription>Latest transactions and token activities</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {recentTransactions.map((transaction) => {
-                  return (
-                    <div key={transaction.id} className="flex items-center justify-between p-4 bg-orange-100 border rounded-lg">
-                      <div className="flex items-center space-x-3">
-                        <div>
-                          <p className="font-bold text-sm text-foreground">{transaction.title}</p>
-                          <p className="text-xs text-muted-foreground">{transaction.description}</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center space-x-4">
-                        {transaction.amount && (
-                          <p className="text-sm font-semibold text-foreground">{transaction.amount}</p>
-                        )}
-                        <div className="flex items-center space-x-2">
-                          <Badge 
-                            variant={
-                              transaction.status === "completed" ? "default" : 
-                              transaction.status === "pending" ? "secondary" : 
-                              "destructive"
-                            }
-                            className={
-                              transaction.status === "completed" ? "bg-emerald-100 text-emerald-800 hover:bg-emerald-200" :
-                              transaction.status === "pending" ? "bg-amber-100 text-amber-800 hover:bg-amber-200" :
-                              "bg-red-100 text-red-800 hover:bg-red-200"
-                            }
-                          >
-                            {transaction.status}
-                          </Badge>
-                          <span className="text-xs text-muted-foreground whitespace-nowrap">
-                            {formatTransactionTime(transaction.timestamp)}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  )
-                })}
-                
-                {recentTransactions.length === 0 && (                  
-                  <div className="text-center py-8">
-                    <Activity className="h-16 w-16 mx-auto text-muted-foreground/40 mb-4" />
-                    <p className="text-muted-foreground mb-4">No recent activity</p>
-                    <Button asChild>
-                      <Link href="/createNewToken">
-                        <Plus className="h-4 w-4 mr-2" />
-                        Create Your First Token
-                      </Link>
-                    </Button>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-
           {/* Active Tokens Overview */}
           </TabsContent>
           <TabsContent value="harvests" className="space-y-6">
             <Card>
-              <CardHeader>
+              <CardHeader>                
                 <div className="flex items-center justify-between">
                   <div>
                     <CardTitle>Active Harvest Tokens</CardTitle>
-                    <CardDescription>Your current tokenized fish harvests</CardDescription>
+                    <CardDescription>Your current tokenized lobster harvests</CardDescription>
                   </div>
                   <ToggleGroup
                     type="single"

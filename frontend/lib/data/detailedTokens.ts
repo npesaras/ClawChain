@@ -87,6 +87,7 @@ export interface Document {
 export interface DetailedToken {
   id: string
   species: string
+  scientificName: string
   producer: Producer
   harvest: HarvestDetails
   investment: Investment
@@ -100,7 +101,8 @@ export interface DetailedToken {
 export const detailedTokens: DetailedToken[] = [
   {
     id: "AC-001",
-    species: "Atlantic Salmon",
+    species: "Banagan",
+    scientificName: "Panulirus longipes",
     producer: {
       name: "Nordic Aqua Farm",
       location: "Trondheim, Norway",
@@ -213,7 +215,8 @@ export const detailedTokens: DetailedToken[] = [
     ],  },
   {
     id: "AC-002",
-    species: "Rainbow Trout",
+    species: "Udang",
+    scientificName: "Panulirus penicillatus",
     producer: {
       name: "Mountain Stream Farms",
       location: "Colorado, USA",
@@ -312,7 +315,8 @@ export const detailedTokens: DetailedToken[] = [
     ],  },
   {
     id: "AC-003",
-    species: "Sea Bass",
+    species: "Spiny Lobster",
+    scientificName: "Panulirus spp.",
     producer: {
       name: "Mediterranean Aqua",
       location: "Barcelona, Spain",

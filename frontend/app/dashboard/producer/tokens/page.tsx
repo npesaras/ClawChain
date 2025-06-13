@@ -80,10 +80,10 @@ export default function MyTokensPage() {
       "AC-002": "1 hour ago",
       "AC-003": "3 hours ago"
     }
-    
-    return {
+      return {
       id: token.id,
       species: token.species,
+      scientificName: token.scientificName,
       pond: pondMapping[token.id] || "Pond A",
       location: locationMapping[token.id] || "North Sector",
       quantity: token.quantity,
@@ -158,11 +158,10 @@ export default function MyTokensPage() {
     <div className="min-h-screen bg-orange-50">
       <DashboardHeader userRole="producer" />
       <div className="container mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-8">
-          <div>
+        <div className="flex items-center justify-between mb-8">          <div>
             <h1 className="text-3xl font-bold text-gray-900">My Tokens</h1>
-            <p className="text-gray-600">Manage and monitor all your fish harvest tokens</p>
-          </div>          
+            <p className="text-gray-600">Manage and monitor all your lobster harvest tokens</p>
+          </div>
           <div className="flex space-x-3">
             <Button asChild>
               <Link href="/createNewToken">
@@ -278,10 +277,13 @@ export default function MyTokensPage() {
                                   className="object-cover"
                                 />
                               )}
-                            </div>
+                            </div>                            
                             <div>
                               <h4 className="font-semibold text-lg">{token.species}</h4>
                               <p className="text-sm text-gray-600">Token {token.id}</p>
+                              <p className="text-xs text-gray-500">
+                                {token.scientificName}
+                              </p>
                               <p className="text-xs text-gray-500">
                                 {token.pond} • {token.location}
                               </p>
@@ -354,12 +356,13 @@ export default function MyTokensPage() {
                                   className="object-cover"
                                 />
                               )}
-                            </div>
+                            </div>                            
                             <div>
                               <h4 className="font-semibold text-xl">{token.species}</h4>
                               <p className="text-gray-600">
                                 Token {token.id} • {token.pond} ({token.location})
                               </p>
+                              <p className="text-sm text-gray-500">{token.scientificName}</p>
                               <p className="text-sm text-gray-500">Created: {token.createdDate}</p>
                             </div>
                           </div>
