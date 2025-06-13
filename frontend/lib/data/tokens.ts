@@ -6,9 +6,10 @@ export interface Token {
   harvestDate: string
   progress: number
   status: string
-  funded: string
+  sold: string
   total: string
   daysRemaining: number
+  buyers: number
   image?: string
 }
 
@@ -21,9 +22,10 @@ export const tokens: Token[] = [
     harvestDate: "2024-03-15",
     progress: 75,
     status: "Growing",
-    funded: "₱18,750",
+    sold: "₱18,750",
     total: "₱25,000",
     daysRemaining: 12,
+    buyers: 8,
     image: "/fishTilapia.jpg",
   },
   {
@@ -34,9 +36,10 @@ export const tokens: Token[] = [
     harvestDate: "2024-02-28",
     progress: 90,
     status: "Ready Soon",
-    funded: "₱13,500",
+    sold: "₱13,500",
     total: "₱15,000",
     daysRemaining: 5,
+    buyers: 12,
     image: "/fishMilkfish.jpg",
   },
   {
@@ -47,9 +50,10 @@ export const tokens: Token[] = [
     harvestDate: "2024-04-20",
     progress: 45,
     status: "Growing",
-    funded: "₱28,800",
+    sold: "₱28,800",
     total: "₱32,000",
     daysRemaining: 28,
+    buyers: 15,
     image: "/fishPompano.jpeg",
   },
 ]
@@ -66,6 +70,12 @@ export const getTotalTokensCount = (): number => {
 export const getTotalTokenValue = (): number => {
   return tokens.reduce((sum, token) => {
     return sum + parseInt(token.total.replace(/[₱,]/g, ''))
+  }, 0)
+}
+
+export const getTotalSoldValue = (): number => {
+  return tokens.reduce((sum, token) => {
+    return sum + parseInt(token.sold.replace(/[₱,]/g, ''))
   }, 0)
 }
 

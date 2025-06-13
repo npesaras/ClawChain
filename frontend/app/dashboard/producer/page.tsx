@@ -103,10 +103,10 @@ export default function ProducerDashboard() {
                 <p className="text-gray-600">Days Remaining</p>
                 <p className="font-medium">{token.daysRemaining} days</p>
               </div>
-              <div>
-                <p className="text-gray-600">Funding</p>
+              <div>                
+                <p className="text-gray-600">Sales</p>
                 <p className="font-medium">
-                  {token.funded} / {token.total}
+                  {token.sold} / {token.total}
                 </p>
               </div>
             </div>
@@ -162,9 +162,9 @@ export default function ProducerDashboard() {
                   <p className="text-sm text-gray-600">Quantity</p>
                   <p className="font-medium">{token.quantity}</p>
                 </div>
-                <div className="text-center">
-                  <p className="text-sm text-gray-600">Funding</p>
-                  <p className="font-medium">{token.funded}</p>
+                <div className="text-center">                  
+                  <p className="text-sm text-gray-600">Sales</p>
+                  <p className="font-medium">{token.sold}</p>
                 </div>
                 <div className="text-center">
                   <p className="text-sm text-gray-600">Harvest Date</p>

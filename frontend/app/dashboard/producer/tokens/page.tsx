@@ -37,12 +37,11 @@ export default function MyTokensPage() {
 
   // Map shared tokens data to match the page's expected format
   // Use deterministic data mapping based on token ID to avoid hydration issues
-  const tokens = sharedTokens.map((token) => {
-    // Create consistent mappings based on token ID instead of array index
-    const pondMapping: { [key: string]: string } = {
-      "AC-001": "Pond A",
-      "AC-002": "Pond B", 
-      "AC-003": "Pond C"
+  const tokens = sharedTokens.map((token) => {    // Create consistent mappings based on token ID instead of array index
+    const penMapping: { [key: string]: string } = {
+      "AC-001": "Pen A",
+      "AC-002": "Pen B", 
+      "AC-003": "Pen C"
     }
     
     const locationMapping: { [key: string]: string } = {
@@ -50,8 +49,7 @@ export default function MyTokensPage() {
       "AC-002": "East Sector",
       "AC-003": "South Sector"
     }
-    
-    const investorMapping: { [key: string]: number } = {
+      const buyersMapping: { [key: string]: number } = {
       "AC-001": 8,
       "AC-002": 12,
       "AC-003": 15
@@ -74,8 +72,7 @@ export default function MyTokensPage() {
       "AC-002": "2024-01-08",
       "AC-003": "2024-02-01"
     }
-    
-    const lastUpdateMapping: { [key: string]: string } = {
+      const lastUpdateMapping: { [key: string]: string } = {
       "AC-001": "2 hours ago",
       "AC-002": "1 hour ago",
       "AC-003": "3 hours ago"
@@ -84,16 +81,19 @@ export default function MyTokensPage() {
       id: token.id,
       species: token.species,
       scientificName: token.scientificName,
-      pond: pondMapping[token.id] || "Pond A",
+      pond: penMapping[token.id] || "Pen A",
       location: locationMapping[token.id] || "North Sector",
       quantity: token.quantity,
       harvestDate: token.harvestDate,
       progress: token.progress,
-      status: token.status,
-      funded: parseInt(token.funded.replace(/[₱,]/g, '')),
+      status: token.status,      
+      sold: parseInt(token.sold.replace(/[₱,]/g, '')),
       total: parseInt(token.total.replace(/[₱,]/g, '')),
       daysRemaining: token.daysRemaining,
-      investors: investorMapping[token.id] || 8,
+      buyers: buyersMapping[token.id] || 8,
+      // For backward compatibility with existing UI
+      investors: buyersMapping[token.id] || 8,
+      funded: parseInt(token.sold.replace(/[₱,]/g, '')),
       avgReturn: returnMapping[token.id] || "12.5%",
       riskLevel: riskMapping[token.id] || "Low",
       createdDate: createdDateMapping[token.id] || "2024-01-15",
@@ -101,7 +101,6 @@ export default function MyTokensPage() {
       image: token.image,
     }
   })
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Ready Soon":
@@ -118,8 +117,7 @@ export default function MyTokensPage() {
   }
 
   const getStatusIcon = (status: string) => {
-    switch (status) {
-      case "Ready Soon":
+    switch (status) {      case "Ready Soon":
         return <CheckCircle className="h-4 w-4" />
       case "Growing":
         return <Activity className="h-4 w-4" />
@@ -146,7 +144,7 @@ export default function MyTokensPage() {
   }
   const filteredTokens = statusFilter === "all" ? tokens : tokens.filter((token) => token.status === statusFilter)
   const totalValue = tokens.reduce((sum, token) => sum + token.total, 0)
-  const totalFunded = tokens.reduce((sum, token) => sum + token.funded, 0)
+  const totalSold = tokens.reduce((sum, token) => sum + token.sold, 0)
   const avgProgress = tokens.reduce((sum, token) => sum + token.progress, 0) / tokens.length
 
   // Prevent hydration mismatch by not rendering until mounted
@@ -158,7 +156,8 @@ export default function MyTokensPage() {
     <div className="min-h-screen bg-orange-50">
       <DashboardHeader userRole="producer" />
       <div className="container mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-8">          <div>
+        <div className="flex items-center justify-between mb-8">          
+          <div>
             <h1 className="text-3xl font-bold text-gray-900">My Tokens</h1>
             <p className="text-gray-600">Manage and monitor all your lobster harvest tokens</p>
           </div>
@@ -191,7 +190,7 @@ export default function MyTokensPage() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">₱{totalValue.toLocaleString()}</div>
-              <p className="text-xs text-muted-foreground">₱{totalFunded.toLocaleString()} funded</p>
+              <p className="text-xs text-muted-foreground">₱{totalSold.toLocaleString()} sold</p>
             </CardContent>
           </Card>
           <Card>
@@ -237,7 +236,7 @@ export default function MyTokensPage() {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="all">All Status</SelectItem>
-                        <SelectItem value="Funding">Funding</SelectItem>
+                        <SelectItem value="For Sale">For Sale</SelectItem>
                         <SelectItem value="Growing">Growing</SelectItem>
                         <SelectItem value="Ready Soon">Ready Soon</SelectItem>
                         <SelectItem value="Harvested">Harvested</SelectItem>
@@ -266,7 +265,8 @@ export default function MyTokensPage() {
                             <Badge className={getStatusColor(token.status)}>
                               {getStatusIcon(token.status)}
                               <span className="ml-1">{token.status}</span>
-                            </Badge>                          </div>
+                            </Badge>                          
+                            </div>
                           <div className="flex items-center space-x-3">
                             <div className="relative w-16 h-16 rounded-lg overflow-hidden bg-gray-100">
                               {token.image && (
@@ -280,7 +280,7 @@ export default function MyTokensPage() {
                             </div>                            
                             <div>
                               <h4 className="font-semibold text-lg">{token.species}</h4>
-                              <p className="text-sm text-gray-600">Token {token.id}</p>
+                              <p className="text-sm text-gray-600">Token {token.id}</p>                              
                               <p className="text-xs text-gray-500">
                                 {token.scientificName}
                               </p>
@@ -300,21 +300,20 @@ export default function MyTokensPage() {
                               <p className="text-gray-600">Progress</p>
                               <p className="font-medium">{token.progress}%</p>
                             </div>
-                            <div>
-                              <p className="text-gray-600">Investors</p>
-                              <p className="font-medium">{token.investors}</p>
+                            <div>                              
+                              <p className="text-gray-600">Buyers</p>
+                              <p className="font-medium">{token.buyers}</p>
                             </div>
                             <div>
                               <p className="text-gray-600">Avg Return</p>
-                              <p className="font-medium text-green-600">{token.avgReturn}</p>
-                            </div>
+                              <p className="font-medium text-green-600">{token.avgReturn}</p>                            </div>
                           </div>
                           <div className="space-y-2">
                             <div className="flex justify-between text-sm">
-                              <span>Funding Progress</span>
-                              <span>{Math.round((token.funded / token.total) * 100)}%</span>
+                              <span>Sales Progress</span>
+                              <span>{Math.round((token.sold / token.total) * 100)}%</span>
                             </div>
-                            <Progress value={(token.funded / token.total) * 100} className="h-2" />
+                            <Progress value={(token.sold / token.total) * 100} className="h-2" />
                           </div>
                           <div className="space-y-2">
                             <div className="flex justify-between text-sm">
@@ -383,13 +382,13 @@ export default function MyTokensPage() {
                             <p className="text-sm text-gray-600">Total Value</p>
                             <p className="font-semibold">₱{token.total.toLocaleString()}</p>
                           </div>
-                          <div>
-                            <p className="text-sm text-gray-600">Funded</p>
-                            <p className="font-semibold text-green-600">₱{token.funded.toLocaleString()}</p>
+                          <div>                            
+                            <p className="text-sm text-gray-600">Sold</p>
+                            <p className="font-semibold text-green-600">₱{token.sold.toLocaleString()}</p>
                           </div>
-                          <div>
-                            <p className="text-sm text-gray-600">Investors</p>
-                            <p className="font-semibold">{token.investors}</p>
+                          <div>                            
+                            <p className="text-sm text-gray-600">Buyers</p>
+                            <p className="font-semibold">{token.buyers}</p>
                           </div>
                           <div>
                             <p className="text-sm text-gray-600">Avg Return</p>
@@ -399,14 +398,14 @@ export default function MyTokensPage() {
                             <p className="text-sm text-gray-600">Risk Level</p>
                             <p className={`font-semibold ${getRiskColor(token.riskLevel)}`}>{token.riskLevel}</p>
                           </div>
-                        </div>                        
+                        </div>                          
                         <div className="space-y-4 mb-4">
                           <div className="space-y-2">
                             <div className="flex justify-between text-sm">
-                              <span>Funding Progress</span>
-                              <span>{Math.round((token.funded / token.total) * 100)}%</span>
+                              <span>Sales Progress</span>
+                              <span>{Math.round((token.sold / token.total) * 100)}%</span>
                             </div>
-                            <Progress value={(token.funded / token.total) * 100} className="h-2" />
+                            <Progress value={(token.sold / token.total) * 100} className="h-2" />
                           </div>
                           <div className="space-y-2">
                             <div className="flex justify-between text-sm">
@@ -449,7 +448,8 @@ export default function MyTokensPage() {
                 <CardTitle>Token History</CardTitle>
                 <CardDescription>Complete timeline of your token activities</CardDescription>
               </CardHeader>
-              <CardContent>                  <div className="space-y-4">
+              <CardContent>                  
+                <div className="space-y-4">
                   {tokens.slice(0, 5).map((token) => (
                     <div key={token.id} className="flex items-center justify-between p-4 border rounded-lg bg-orange-100">
                       <div className="flex items-center space-x-4">

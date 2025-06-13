@@ -71,7 +71,7 @@ export default function TokenizePage() {
 
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-gray-900 mb-4">Create Fish Harvest Token</h1>
-            <p className="text-gray-600">Tokenize your sustainable fish harvest to access global funding</p>
+            <p className="text-gray-600">Tokenize your sustainable lobster harvest to access global markets</p>
           </div>
 
           <Card>
@@ -108,12 +108,12 @@ export default function TokenizePage() {
                         value={formData.quantity}
                         onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
                       />
-                    </div>
+                    </div>                    
                     <div className="space-y-2">
                       <Label htmlFor="location">Farm Location *</Label>
                       <Input
                         id="location"
-                        placeholder="e.g., Farm A - Sector 3, Trondheim, Norway"
+                        placeholder="e.g., Farm A - Sector 3, Puerto Princesa, Palawan"
                         value={formData.location}
                         onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                       />
@@ -216,7 +216,7 @@ export default function TokenizePage() {
                 <div className="space-y-6">
                   <div className="text-center mb-6">
                     <h2 className="text-2xl font-bold">Documentation & Media</h2>
-                    <p className="text-gray-600">Upload images and documents to build investor confidence</p>
+                    <p className="text-gray-600">Upload images and documents to build buyer confidence</p>
                   </div>
                   <div className="grid md:grid-cols-2 gap-6">
                     <Card>
@@ -294,18 +294,19 @@ export default function TokenizePage() {
                     </Card>
                     <Card>
                       <CardHeader>
-                        <CardTitle>Investment Settings</CardTitle>
+                        <CardTitle>Purchase Settings</CardTitle>
                       </CardHeader>
-                      <CardContent className="space-y-4">                        <div className="space-y-2">
-                          <Label>Minimum Investment (₱)</Label>
+                      <CardContent className="space-y-4">                        
+                        <div className="space-y-2">
+                          <Label>Minimum Purchase (₱)</Label>
                           <Input type="number" placeholder="500" />
                         </div>
                         <div className="space-y-2">
-                          <Label>Maximum Investment (₱)</Label>
+                          <Label>Maximum Purchase (₱)</Label>
                           <Input type="number" placeholder="5000" />
                         </div>
                         <div className="space-y-2">
-                          <Label>Funding Deadline</Label>
+                          <Label>Sales Deadline</Label>
                           <Input type="date" />
                         </div>
                         <div className="space-y-2">

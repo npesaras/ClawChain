@@ -30,14 +30,14 @@ export interface HarvestDetails {
   status?: string
 }
 
-export interface Investment {
+export interface BuyerInfo {
   totalValue: number
-  funded: number
-  fundingProgress: number
-  investors: number
-  expectedROI: string
+  sold: number
+  salesProgress: number
+  buyers: number
+  pricePerKg: string
   daysLeft: number
-  soldTokens: number
+  soldQuantity: number
 }
 
 export interface SustainabilityMetrics {
@@ -72,7 +72,7 @@ export interface TimelineEvent {
 
 export interface Transaction {
   date: string
-  investor: string
+  buyer: string
   amount: string
   tokens: number
   type: string
@@ -90,7 +90,7 @@ export interface DetailedToken {
   scientificName: string
   producer: Producer
   harvest: HarvestDetails
-  investment: Investment
+  buyer: BuyerInfo
   sustainability: SustainabilityMetrics
   iotData: IoTData
   timeline: TimelineEvent[]
@@ -102,41 +102,40 @@ export const detailedTokens: DetailedToken[] = [
   {
     id: "AC-001",
     species: "Banagan",
-    scientificName: "Panulirus longipes",
+    scientificName: "Panulirus longipes",    
     producer: {
-      name: "Nordic Aqua Farm",
-      location: "Trondheim, Norway",
+      name: "Palawan Marine Farm",
+      location: "Puerto Princesa, Palawan",
       avatar: "/placeholder.svg?height=40&width=40",
       rating: 4.9,
       totalHarvests: 47,
       sustainabilityScore: 95,
-      certifications: ["ASC", "BAP 4-Star", "Carbon Neutral"],
+      certifications: ["BFAR Certified", "Organic", "Sustainable Aquaculture"],
       joinDate: "2019",
-      bio: "Family-owned sustainable salmon farm operating in the pristine fjords of Norway for over 30 years.",
-    },
+      bio: "Family-owned sustainable lobster farm operating in the pristine waters of Palawan for over 30 years.",
+    },    
     harvest: {
       quantity: "2,500 kg",
       totalValue: "₱25,000",
       pricePerKg: "₱10.00",
       harvestDate: "2024-03-15",
-      location: "Farm A - Sector 3",
-      coordinates: "63.4305° N, 10.3951° E",
+      location: "Farm A - Sector 3, Puerto Princesa Bay",
+      coordinates: "9.7392° N, 118.7353° E",
       waterDepth: "25 meters",
       cageSize: "50m x 50m",
       stockingDate: "2023-05-01",
       expectedYield: "2,500 kg",
       currentWeight: "4.2 kg avg",
       growthProgress: 75,
-      status: "Growing",
-    },
-    investment: {
+      status: "Growing",    },
+    buyer: {
       totalValue: 25000,
-      funded: 18750,
-      fundingProgress: 75,
-      investors: 37,
-      expectedROI: "12-15%",
+      sold: 18750,
+      salesProgress: 75,
+      buyers: 8,
+      pricePerKg: "₱10.00",
       daysLeft: 12,
-      soldTokens: 1875,
+      soldQuantity: 1875,
     },
     sustainability: {
       overallScore: 95,
@@ -188,21 +187,21 @@ export const detailedTokens: DetailedToken[] = [
     transactions: [
       {
         date: "2024-01-20",
-        investor: "EcoInvestor.icp",
+        buyer: "EcoInvestor.icp",
         amount: "₱2,500",
         tokens: 250,
         type: "purchase",
       },
       {
         date: "2024-01-18",
-        investor: "GreenFund.icp",
+        buyer: "GreenFund.icp",
         amount: "₱5,000",
         tokens: 500,
         type: "purchase",
       },
       {
         date: "2024-01-15",
-        investor: "SustainableCapital.icp",
+        buyer: "SustainableCapital.icp",
         amount: "₱1,000",
         tokens: 100,
         type: "purchase",
@@ -212,45 +211,45 @@ export const detailedTokens: DetailedToken[] = [
       { name: "Sustainability Report Q4 2023", type: "PDF", size: "2.4 MB" },
       { name: "Health Inspection Certificate", type: "PDF", size: "1.1 MB" },
       { name: "ASC Certification", type: "PDF", size: "856 KB" },
-    ],  },
+    ],  
+  },
   {
     id: "AC-002",
     species: "Udang",
-    scientificName: "Panulirus penicillatus",
+    scientificName: "Panulirus penicillatus",    
     producer: {
-      name: "Mountain Stream Farms",
-      location: "Colorado, USA",
+      name: "Bohol Coastal Farm",
+      location: "Bohol, Philippines",
       avatar: "/placeholder.svg?height=40&width=40",
       rating: 4.7,
       totalHarvests: 32,
       sustainabilityScore: 88,
-      certifications: ["Organic Certified", "BAP 4-Star"],
+      certifications: ["Organic Certified", "BFAR Certified"],
       joinDate: "2020",
-      bio: "High-altitude sustainable trout farming with focus on clean mountain water and organic practices.",
-    },
+      bio: "Sustainable lobster farming with focus on clean coastal waters and organic practices.",
+    },    
     harvest: {
       quantity: "1,800 kg",
       totalValue: "₱15,000",
       pricePerKg: "₱8.33",
       harvestDate: "2024-02-28",
-      location: "Mountain Farm - Tank B",
-      coordinates: "39.7392° N, 104.9903° W",
-      waterDepth: "3 meters",
+      location: "Coastal Farm - Pen B, Panglao Island",
+      coordinates: "9.5804° N, 123.7443° E",
+      waterDepth: "15 meters",
       cageSize: "30m x 20m",
       stockingDate: "2023-04-15",
       expectedYield: "1,800 kg",
       currentWeight: "1.2 kg avg",
       growthProgress: 90,
-      status: "Ready Soon",
-    },
-    investment: {
+      status: "Ready Soon",    },
+    buyer: {
       totalValue: 15000,
-      funded: 13500,
-      fundingProgress: 90,
-      investors: 24,
-      expectedROI: "10-12%",
+      sold: 13500,
+      salesProgress: 90,
+      buyers: 12,
+      pricePerKg: "₱8.33",
       daysLeft: 5,
-      soldTokens: 1350,
+      soldQuantity: 1620,
     },
     sustainability: {
       overallScore: 88,
@@ -295,14 +294,14 @@ export const detailedTokens: DetailedToken[] = [
     transactions: [
       {
         date: "2024-01-19",
-        investor: "TroutLover.icp",
+        buyer: "TroutLover.icp",
         amount: "₱1,500",
         tokens: 180,
         type: "purchase",
       },
       {
         date: "2024-01-10",
-        investor: "MountainInvest.icp",
+        buyer: "MountainInvest.icp",
         amount: "₱3,000",
         tokens: 360,
         type: "purchase",
@@ -312,45 +311,45 @@ export const detailedTokens: DetailedToken[] = [
       { name: "Organic Certification", type: "PDF", size: "1.8 MB" },
       { name: "Water Quality Report", type: "PDF", size: "980 KB" },
       { name: "Growth Progress Report", type: "PDF", size: "1.2 MB" },
-    ],  },
+    ],  
+  },
   {
     id: "AC-003",
     species: "Spiny Lobster",
-    scientificName: "Panulirus spp.",
+    scientificName: "Panulirus spp.",    
     producer: {
-      name: "Mediterranean Aqua",
-      location: "Barcelona, Spain",
+      name: "Siargao Marine Farm",
+      location: "Siargao, Surigao del Norte",
       avatar: "/placeholder.svg?height=40&width=40",
       rating: 4.8,
       totalHarvests: 28,
       sustainabilityScore: 92,
-      certifications: ["ASC", "EU Organic", "Global GAP"],
+      certifications: ["BFAR Certified", "Organic", "Global GAP"],
       joinDate: "2021",
-      bio: "Mediterranean sea bass farming with traditional methods and modern sustainability practices.",
-    },
+      bio: "Marine lobster farming with traditional methods and modern sustainability practices in Siargao's pristine waters.",
+    },    
     harvest: {
       quantity: "3,200 kg",
       totalValue: "₱32,000",
       pricePerKg: "₱10.00",
       harvestDate: "2024-04-20",
-      location: "Mediterranean Farm - Cage C1",
-      coordinates: "41.3851° N, 2.1734° E",
-      waterDepth: "15 meters",
+      location: "Siargao Marine Farm - Cage C1, Cloud 9",
+      coordinates: "9.8601° N, 126.1666° E",
+      waterDepth: "20 meters",
       cageSize: "40m x 40m",
       stockingDate: "2023-06-01",
       expectedYield: "3,200 kg",
       currentWeight: "2.8 kg avg",
       growthProgress: 45,
-      status: "Growing",
-    },
-    investment: {
+      status: "Growing",    },
+    buyer: {
       totalValue: 32000,
-      funded: 28800,
-      fundingProgress: 90,
-      investors: 48,
-      expectedROI: "14-16%",
+      sold: 28800,
+      salesProgress: 90,
+      buyers: 15,
+      pricePerKg: "₱10.00",
       daysLeft: 28,
-      soldTokens: 2880,
+      soldQuantity: 2880,
     },
     sustainability: {
       overallScore: 92,
@@ -372,13 +371,12 @@ export const detailedTokens: DetailedToken[] = [
       turbidity: 2.3,
       lastUpdated: "2024-01-20T11:45:00Z",
       alerts: [],
-    },
-    timeline: [
+    },    timeline: [
       {
         date: "2024-01-18",
         event: "Mid-cycle health assessment",
         type: "inspection",
-        details: "Fish showing excellent growth rates",
+        details: "Lobsters showing excellent growth rates",
       },
       {
         date: "2024-01-10",
@@ -392,26 +390,25 @@ export const detailedTokens: DetailedToken[] = [
         type: "funding",
         details: "90% funding achieved ahead of schedule",
       },
-    ],
-    transactions: [
+    ],    transactions: [
       {
         date: "2024-01-18",
-        investor: "SeaBassCapital.icp",
+        buyer: "PalawanCapital.ph",
         amount: "₱5,000",
         tokens: 500,
         type: "purchase",
       },
       {
         date: "2024-01-12",
-        investor: "MediterraneanFund.icp",
+        buyer: "VisayasFund.ph",
         amount: "₱8,000",
         tokens: 800,
         type: "purchase",
       },
     ],
     documents: [
-      { name: "ASC Sustainability Report", type: "PDF", size: "2.1 MB" },
-      { name: "EU Organic Certificate", type: "PDF", size: "1.5 MB" },
+      { name: "BFAR Sustainability Report", type: "PDF", size: "2.1 MB" },
+      { name: "Philippine Organic Certificate", type: "PDF", size: "1.5 MB" },
       { name: "Growth Tracking Report", type: "PDF", size: "1.8 MB" },
     ],
   },
@@ -440,9 +437,9 @@ export const getActiveDetailedTokens = (): DetailedToken[] => {
   )
 }
 
-export const getTokensByFundingProgress = (minProgress: number): DetailedToken[] => {
+export const getTokensBySalesProgress = (minProgress: number): DetailedToken[] => {
   return detailedTokens.filter(token => 
-    token.investment.fundingProgress >= minProgress
+    token.buyer.salesProgress >= minProgress
   )
 }
 
@@ -453,11 +450,11 @@ export const getHighPerformingTokens = (): DetailedToken[] => {
 }
 
 export const getTotalDetailedTokenValue = (): number => {
-  return detailedTokens.reduce((sum, token) => sum + token.investment.totalValue, 0)
+  return detailedTokens.reduce((sum, token) => sum + token.buyer.totalValue, 0)
 }
 
-export const getTotalFundedAmount = (): number => {
-  return detailedTokens.reduce((sum, token) => sum + token.investment.funded, 0)
+export const getTotalSoldAmount = (): number => {
+  return detailedTokens.reduce((sum, token) => sum + token.buyer.sold, 0)
 }
 
 export const getAverageSustainabilityScore = (): number => {
@@ -466,5 +463,5 @@ export const getAverageSustainabilityScore = (): number => {
 }
 
 export const getTokensNearHarvest = (daysThreshold: number = 30): DetailedToken[] => {
-  return detailedTokens.filter(token => token.investment.daysLeft <= daysThreshold)
+  return detailedTokens.filter(token => token.buyer.daysLeft <= daysThreshold)
 }
