@@ -16,7 +16,6 @@ import {
   Camera,
   FileText,
   ArrowLeft,
-  Share2,
   AlertTriangle,
   CheckCircle,
   Edit,
@@ -29,7 +28,7 @@ export default function ViewTokenPage() {
   const token = staticToken
   const [selectedImage, setSelectedImage] = useState(0)
   
-  // Static images for tilapia farming
+  // Static images for lobster farming
   const images = [
     "/fishTilapia.jpg",
     "/pondA.jpg", 

@@ -24,7 +24,8 @@ export const transactions: Transaction[] = [  {
     relatedTokenId: "AC-001",
     buyerName: "Maria Santos",
     icon: "TrendingUp"
-  },  {
+  },  
+  {
     id: "txn_002",
     type: "sales_complete",
     title: "Token Fully Sold",
@@ -34,7 +35,8 @@ export const transactions: Transaction[] = [  {
     status: "completed",
     relatedTokenId: "AC-002",
     icon: "CheckCircle"
-  },  {
+  },  
+  {
     id: "txn_003",
     type: "harvest",
     title: "Harvest Completed",
@@ -47,14 +49,16 @@ export const transactions: Transaction[] = [  {
   },
   {
     id: "txn_004",
-    type: "payment",    title: "Buyer Payment Sent",
+    type: "payment",    
+    title: "Buyer Payment Sent",
     description: "ROI payment distributed to 12 buyers for Token #AC-001",
     amount: "₱52,750",
     timestamp: "2025-06-02T11:45:00Z",
     status: "completed",
     relatedTokenId: "AC-001",
     icon: "DollarSign"
-  },  {
+  },  
+  {
     id: "txn_005",
     type: "token_creation",
     title: "New Token Created",
@@ -85,7 +89,8 @@ export const transactions: Transaction[] = [  {
     timestamp: "2025-05-31T10:15:00Z",
     status: "completed",
     icon: "ArrowUpRight"
-  },  {
+  },  
+  {
     id: "txn_008",
     type: "purchase",
     title: "Purchase Received",
