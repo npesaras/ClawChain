@@ -102,44 +102,6 @@ export default function ViewTokenPage() {
               </CardContent>
             </Card>
 
-            {/* Investment Progress */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  Investment Progress
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div>
-                    <div className="flex justify-between text-sm mb-2">
-                      <span>Funding Progress</span>
-                      <span className="font-semibold">{token.investment.fundingProgress}%</span>
-                    </div>
-                    <Progress value={token.investment.fundingProgress} className="h-2" />
-                  </div>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-                    <div>
-                      <div className="text-gray-600">Total Value</div>
-                      <div className="font-semibold">₱{token.investment.totalValue.toLocaleString()}</div>
-                    </div>
-                    <div>
-                      <div className="text-gray-600">Funded</div>
-                      <div className="font-semibold">₱{token.investment.funded.toLocaleString()}</div>
-                    </div>
-                    <div>
-                      <div className="text-gray-600">Investors</div>
-                      <div className="font-semibold">{token.investment.investors}</div>
-                    </div>
-                    <div>
-                      <div className="text-gray-600">Expected ROI</div>
-                      <div className="font-semibold">{token.investment.expectedROI}</div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
             {/* Tabs for detailed information */}
             <Tabs defaultValue="overview" className="w-full">
               <TabsList className="grid w-full grid-cols-4">
@@ -206,7 +168,7 @@ export default function ViewTokenPage() {
                               <Users className="h-5 w-5 text-orange-600" />
                             </div>
                             <div>
-                              <div className="font-medium">{transaction.investor}</div>
+                              <div className="font-medium">{transaction.buyer}</div>
                               <div className="text-sm text-gray-600">{transaction.tokens} tokens</div>
                             </div>
                           </div>
@@ -519,15 +481,15 @@ export default function ViewTokenPage() {
               </CardContent>
             </Card>
 
-            {/* Investment Actions */}
+            {/* Buyers Actions */}
             <Card>
               <CardHeader>
-                <CardTitle>Investment Actions</CardTitle>
+                <CardTitle>Buyers Actions</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 <Button variant="outline" className="w-full">
                   <Users className="h-4 w-4 mr-2" />
-                  View Investors
+                  View Buyers
                 </Button>
                 <Button variant="outline" className="w-full">
                   <AlertTriangle className="h-4 w-4 mr-2" />

@@ -21,7 +21,7 @@ interface DashboardHeaderProps {
 }
 
 export function DashboardHeader({ userRole: propUserRole, forceRole }: DashboardHeaderProps) {
-  const [userRole, setUserRole] = useState<"producer" | "investor" | "buyer">("producer")
+  const [userRole, setUserRole] = useState<"producer" | "buyer">("producer")
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export function DashboardHeader({ userRole: propUserRole, forceRole }: Dashboard
         localStorage.setItem("userRole", propUserRole)
       }
     } else if (typeof window !== 'undefined') {
-      const storedRole = localStorage.getItem("userRole") as "producer" | "investor" | "buyer"
+      const storedRole = localStorage.getItem("userRole") as "producer" | "buyer"
       if (storedRole) {
         setUserRole(storedRole)
       }
@@ -52,26 +52,33 @@ export function DashboardHeader({ userRole: propUserRole, forceRole }: Dashboard
       window.location.href = "/"
     }
   }
+  
   const getRoleIcon = () => {
     switch (userRole) {
       case "producer":
         return <Image src="/shrimp.svg" alt="Shrimp" width={16} height={16} />
+      case "buyer":
+        return <ShoppingCart className="h-4 w-4" />
+      default:
+        return <User className="h-4 w-4" />
     }
   }
+  
   const getRoleColor = () => {
     switch (userRole) {
       case "producer":
         return "bg-orange-100 text-orange-800"
-      case "investor":
-        return "bg-green-100 text-green-800"
       case "buyer":
         return "bg-purple-100 text-purple-800"
+      default:
+        return "bg-gray-100 text-gray-800"
     }
   }
 
   return (
     <header className="border-b bg-white sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">        <div className="flex items-center space-x-6">          <Link href="/" className="flex items-center space-x-2">
+      <div className="container mx-auto px-4 py-4 flex items-center justify-between">        
+        <div className="flex items-center space-x-6">          <Link href="/" className="flex items-center space-x-2">
             <Image src="/shrimp.svg" alt="Shrimp" width={32} height={32} className="text-orange-600" />
             <span className="text-2xl font-bold text-orange-900">ClawChain</span>
           </Link>
@@ -79,7 +86,8 @@ export function DashboardHeader({ userRole: propUserRole, forceRole }: Dashboard
           <nav className="hidden md:flex items-center space-x-6">
             <Link href={`/dashboard/${userRole}`} className="text-gray-600 hover:text-orange-600 font-medium">
               Dashboard
-            </Link>            {userRole === "producer" && (
+            </Link>            
+            {userRole === "producer" && (
               <>
                 <Link href={`/dashboard/producer/tokens`} className="text-gray-600 hover:text-orange-600">
                   My Tokens
