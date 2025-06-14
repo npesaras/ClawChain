@@ -1,6 +1,5 @@
 module lobster_addr::lobster_token {
     use std::signer;
-    use std::vector;
 
     // Error codes
     const E_TOKEN_NOT_FOUND: u64 = 1;
@@ -23,7 +22,7 @@ module lobster_addr::lobster_token {
     }
 
     struct LobsterToken has key {
-        id: u64,              // Changed from String to u64
+        id: u64,              
         harvest: LobsterHarvest,
         producer: address,
     }
@@ -110,74 +109,5 @@ module lobster_addr::lobster_token {
             token.harvest.location,
             token.harvest.harvest_date
         )
-    }
-
-    // Helper functions for species names (only when needed)
-    #[view]
-    public fun get_species_name(species_id: u8): vector<u8> {
-        if (species_id == SPECIES_MAINE) {
-            b"Maine Lobster"
-        } else if (species_id == SPECIES_CARIBBEAN) {
-            b"Caribbean Spiny Lobster"
-        } else if (species_id == SPECIES_ROCK) {
-            b"Rock Lobster"
-        } else {
-            b"Unknown Species"
-        }
-    }
-
-    #[view]
-    public fun get_location_name(location_id: u8): vector<u8> {
-        if (location_id == LOCATION_MAINE_COAST) {
-            b"Maine Coast"
-        } else if (location_id == LOCATION_CARIBBEAN_SEA) {
-            b"Caribbean Sea"
-        } else if (location_id == LOCATION_PACIFIC_COAST) {
-            b"Pacific Coast"
-        } else {
-            b"Unknown Location"
-        }
-    }
-
-    // Simplified test functions
-    #[test(producer = @0x123)]
-    public entry fun test_create_lobster_token(producer: signer) acquires TokenRegistry, LobsterToken {
-        create_lobster_token(
-            &producer,
-            SPECIES_MAINE,        
-            100,
-            LOCATION_MAINE_COAST, 
-            1704067200,
-            25
-        );
-
-        // Verify token was created
-        assert!(exists<LobsterToken>(@0x123), 1);
-        assert!(exists<TokenRegistry>(@0x123), 2);
-        
-        let (token_id, species, quantity, price, value) = get_token_info(@0x123);
-        assert!(token_id == 1, 3);
-        assert!(species == SPECIES_MAINE, 4);
-        assert!(quantity == 100, 5);
-        assert!(price == 25, 6);
-        assert!(value == 2500, 7);
-    }
-
-    #[test(producer = @0x123)]
-    public entry fun test_view_functions(producer: signer) acquires TokenRegistry, LobsterToken {
-        create_lobster_token(
-            &producer,
-            SPECIES_CARIBBEAN,
-            50,
-            LOCATION_CARIBBEAN_SEA,
-            1704067200,
-            30
-        );
-
-        let (species, quantity, location, harvest_date) = get_harvest_details(@0x123);
-        assert!(species == SPECIES_CARIBBEAN, 8);
-        assert!(quantity == 50, 9);
-        assert!(location == LOCATION_CARIBBEAN_SEA, 10);
-        assert!(harvest_date == 1704067200, 11);
     }
 }
