@@ -257,7 +257,8 @@ export default function MyTokensPage() {
                   </div>
                 </div>
               </CardHeader>
-              <CardContent>                {viewMode === "grid" ? (
+              <CardContent>                
+                {viewMode === "grid" ? (
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">{filteredTokens.map((token) => (
                       <Card key={token.id} className="transition-shadow bg-orange-100">
                         <CardHeader className="pb-3">
