@@ -16,7 +16,7 @@ module lobster_addr::lobster_token {
     const LOCATION_CARIBBEAN_SEA: u8 = 2;
     const LOCATION_PACIFIC_COAST: u8 = 3;
 
-    // 1. Simplified structs - use u8 instead of String where possible
+    // Core data structures for lobster tokenization
     struct LobsterHarvest has store, copy {
         species: u8,           
         quantity: u64,
@@ -44,7 +44,7 @@ module lobster_addr::lobster_token {
         move_to(account, registry);
     }
 
-    // 3. Create a new lobster token - simplified
+    // 3. Create a new lobster token
     public entry fun create_lobster_token(
         producer: &signer,
         species: u8,           
