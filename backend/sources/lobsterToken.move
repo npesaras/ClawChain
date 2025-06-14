@@ -6,10 +6,15 @@ module lobster_addr::lobster_token {
     const E_UNAUTHORIZED: u64 = 3;
     const E_INVALID_PRICE: u64 = 4;
 
-    // Predefined lobster species as u8 for efficiency
+    // Predefined lobster species
     const SPECIES_MAINE: u8 = 1;
     const SPECIES_CARIBBEAN: u8 = 2;
     const SPECIES_ROCK: u8 = 3;
+
+    // Location constants
+    const LOCATION_MAINE_COAST: u8 = 1;
+    const LOCATION_CARIBBEAN_SEA: u8 = 2;
+    const LOCATION_PACIFIC_COAST: u8 = 3;
 
     // 1. Simplified structs - use u8 instead of String where possible
     struct LobsterHarvest has store, copy {
@@ -30,11 +35,6 @@ module lobster_addr::lobster_token {
     struct TokenRegistry has key {
         next_token_id: u64, 
     }
-
-    // Location constants
-    const LOCATION_MAINE_COAST: u8 = 1;
-    const LOCATION_CARIBBEAN_SEA: u8 = 2;
-    const LOCATION_PACIFIC_COAST: u8 = 3;
 
     // 2. Initialize the registry for a user
     public entry fun initialize_registry(account: &signer) {
@@ -80,14 +80,14 @@ module lobster_addr::lobster_token {
             producer: producer_addr,
         };
 
-        // Store token - single storage operation
+        // Store token
         move_to(producer, token);
 
-        // Update registry - simple increment
+        // Update registry
         registry.next_token_id = registry.next_token_id + 1;
     }
 
-    // 4. View functions - optimized
+    // 4. View functions
     #[view]
     public fun get_token_info(producer_addr: address): (u64, u8, u64, u64, u64) acquires LobsterToken {
         let token = borrow_global<LobsterToken>(producer_addr);
