@@ -30,10 +30,10 @@ export default function ViewTokenPage() {
   
   // Static images for lobster farming
   const images = [
-    "/fishTilapia.jpg",
-    "/pondA.jpg", 
-    "/pondB.jpg",
-    "/pondC.jpg"
+    "/Panulirus-longipes.jpg",
+    "/Panulirus-longipes.jpg", 
+    "/Panulirus-longipes.jpg",
+    "/Panulirus-longipes.jpg"
   ]
   return (
     <div className="min-h-screen bg-orange-50">
@@ -58,6 +58,7 @@ export default function ViewTokenPage() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Left Column - Main Info */}
           <div className="lg:col-span-2 space-y-6">
+            
             {/* Token Overview */}
             <Card>
               <CardHeader>
@@ -66,6 +67,9 @@ export default function ViewTokenPage() {
                     <CardTitle className="text-2xl flex items-center gap-3">
                       {token.species}
                     </CardTitle>
+                    <div className="text-sm text-gray-500 italic mt-1 mb-2">
+                      Panulirus longipes
+                    </div>
                     <CardDescription className="text-lg mt-2">
                       Token ID: {token.id} • {token.harvest.quantity} available
                     </CardDescription>

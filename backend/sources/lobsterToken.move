@@ -1,4 +1,4 @@
-module addr::lobster_token {
+module lobster_addr::lobster_token {
     use std::signer;
     use std::string::{Self, String};
     use std::vector;
