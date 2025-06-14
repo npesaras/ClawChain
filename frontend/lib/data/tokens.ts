@@ -26,7 +26,7 @@ export const tokens: Token[] = [
     total: "₱25,000",
     daysRemaining: 12,
     buyers: 8,
-    image: "/fishTilapia.jpg",
+    image: "/Panulirus-longipes.jpg",
   },
   {
     id: "AC-002",
@@ -40,7 +40,7 @@ export const tokens: Token[] = [
     total: "₱15,000",
     daysRemaining: 5,
     buyers: 12,
-    image: "/fishMilkfish.jpg",
+    image: "/Panulirus-longipes.jpg",
   },
   {
     id: "AC-003",
@@ -54,7 +54,7 @@ export const tokens: Token[] = [
     total: "₱32,000",
     daysRemaining: 28,
     buyers: 15,
-    image: "/fishPompano.jpeg",
+    image: "/Panulirus-longipes.jpg",
   },
 ]
 

@@ -310,13 +310,6 @@ export default function MyTokensPage() {
                           </div>
                           <div className="space-y-2">
                             <div className="flex justify-between text-sm">
-                              <span>Sales Progress</span>
-                              <span>{Math.round((token.sold / token.total) * 100)}%</span>
-                            </div>
-                            <Progress value={(token.sold / token.total) * 100} className="h-2" />
-                          </div>
-                          <div className="space-y-2">
-                            <div className="flex justify-between text-sm">
                               <span>Growth Progress</span>
                               <span>{token.progress}%</span>
                             </div>
