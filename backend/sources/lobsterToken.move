@@ -3,7 +3,6 @@ module lobster_addr::lobster_token {
     use std::string::{Self, String};
     use std::vector;
     use aptos_framework::timestamp;
-    use aptos_framework::event;
 
     // Error codes
     const E_TOKEN_NOT_FOUND: u64 = 1;
@@ -51,23 +50,15 @@ module lobster_addr::lobster_token {
         total_revenue: u64,
     }
 
-    // Events
-    #[event]
-    struct TokenCreated has drop, store {
-        token_id: String,
-        producer: address,
-        species: String,
-        quantity: u64,
-        total_value: u64,
-    }
+    // Predefined lobster species
+    const SPECIES_MAINE_LOBSTER: vector<u8> = b"Maine Lobster";
+    const SPECIES_CARIBBEAN_LOBSTER: vector<u8> = b"Caribbean Spiny Lobster";
+    const SPECIES_ROCK_LOBSTER: vector<u8> = b"Rock Lobster";
 
-    #[event]
-    struct TokenPurchased has drop, store {
-        token_id: String,
-        buyer: address,
-        quantity: u64,
-        amount_paid: u64,
-    }
+    // Common certifications
+    const CERT_MSC: vector<u8> = b"MSC Certified";
+    const CERT_ORGANIC: vector<u8> = b"Organic";
+    const CERT_SUSTAINABLE: vector<u8> = b"Sustainable Fishing";
 
     // 2. Initialize the registry for a user
     public entry fun initialize_registry(account: &signer) {
@@ -136,15 +127,6 @@ module lobster_addr::lobster_token {
         // Update registry
         vector::push_back(&mut registry.tokens, token_id);
         registry.next_token_id = registry.next_token_id + 1;
-
-        // Emit event
-        event::emit(TokenCreated {
-            token_id,
-            producer: producer_addr,
-            species,
-            quantity,
-            total_value,
-        });
     }
 
     // 4. Purchase tokens from a producer
@@ -176,14 +158,6 @@ module lobster_addr::lobster_token {
         vector::push_back(&mut sales.purchases, purchase);
         sales.total_sold = sales.total_sold + quantity;
         sales.total_revenue = sales.total_revenue + amount_to_pay;
-
-        // Emit event
-        event::emit(TokenPurchased {
-            token_id: token.id,
-            buyer: buyer_addr,
-            quantity,
-            amount_paid: amount_to_pay,
-        });
     }
 
     // 5. Update token status (harvest completion, etc.)
@@ -247,5 +221,137 @@ module lobster_addr::lobster_token {
         };
         let registry = borrow_global<TokenRegistry>(producer_addr);
         registry.tokens
+    }
+
+    // Helper function to get predefined species
+    #[view]
+    public fun get_predefined_species(): vector<String> {
+        let species = vector::empty<String>();
+        vector::push_back(&mut species, string::utf8(SPECIES_MAINE_LOBSTER));
+        vector::push_back(&mut species, string::utf8(SPECIES_CARIBBEAN_LOBSTER));
+        vector::push_back(&mut species, string::utf8(SPECIES_ROCK_LOBSTER));
+        species
+    }
+
+    // Helper function to get common certifications
+    #[view]
+    public fun get_common_certifications(): vector<String> {
+        let certs = vector::empty<String>();
+        vector::push_back(&mut certs, string::utf8(CERT_MSC));
+        vector::push_back(&mut certs, string::utf8(CERT_ORGANIC));
+        vector::push_back(&mut certs, string::utf8(CERT_SUSTAINABLE));
+        certs
+    }
+
+    #[test_only]
+    use std::debug;
+
+    #[test(producer = @0x123, buyer = @0x456)]
+    public entry fun test_create_lobster_token(producer: signer, buyer: signer) acquires TokenRegistry {
+        // Test creating a lobster token
+        let species = string::utf8(b"Maine Lobster");
+        let quantity = 100;
+        let location = string::utf8(b"Maine Coast");
+        let harvest_date = 1704067200;
+        let price_per_kg = 25;
+        let certifications = vector::empty<String>();
+        vector::push_back(&mut certifications, string::utf8(b"MSC Certified"));
+
+        create_lobster_token(
+            &producer,
+            species,
+            quantity,
+            location,
+            harvest_date,
+            price_per_kg,
+            certifications
+        );
+
+        // Verify token was created
+        assert!(exists<LobsterToken>(@0x123), 1);
+        assert!(exists<TokenSales>(@0x123), 2);
+        assert!(exists<TokenRegistry>(@0x123), 3);
+    }
+
+    #[test(producer = @0x123, buyer = @0x456)]
+    public entry fun test_purchase_tokens(producer: signer, buyer: signer) acquires TokenRegistry, LobsterToken, TokenSales {
+        // First create a token
+        test_create_lobster_token(producer, buyer);
+
+        // Test purchasing tokens
+        purchase_tokens(&buyer, @0x123, 20);
+
+        // Verify purchase was recorded
+        let available_supply = get_available_supply(@0x123);
+        assert!(available_supply == 80, 4); // 100 - 20 = 80
+
+        let (total_sold, total_revenue) = get_sales_info(@0x123);
+        assert!(total_sold == 20, 5);
+        assert!(total_revenue == 500, 6); // 20 * 25 = 500
+    }
+
+    #[test(producer = @0x123)]
+    public entry fun test_view_functions(producer: signer) acquires TokenRegistry, LobsterToken {
+        // Create a token first
+        let species = string::utf8(b"Caribbean Spiny Lobster");
+        let quantity = 50;
+        let location = string::utf8(b"Caribbean Sea");
+        let harvest_date = 1704067200;
+        let price_per_kg = 30;
+        let certifications = vector::empty<String>();
+        vector::push_back(&mut certifications, string::utf8(b"Organic"));
+        vector::push_back(&mut certifications, string::utf8(b"Sustainable Fishing"));
+
+        create_lobster_token(
+            &producer,
+            species,
+            quantity,
+            location,
+            harvest_date,
+            price_per_kg,
+            certifications
+        );
+
+        // Test view functions
+        let (token_id, token_species, token_quantity, token_price, token_value, token_status) = get_token_info(@0x123);
+        assert!(token_species == string::utf8(b"Caribbean Spiny Lobster"), 7);
+        assert!(token_quantity == 50, 8);
+        assert!(token_price == 30, 9);
+        assert!(token_value == 1500, 10); // 50 * 30 = 1500
+
+        let sustainability_score = get_sustainability_score(@0x123);
+        assert!(sustainability_score == 85, 11);
+
+        let available_supply = get_available_supply(@0x123);
+        assert!(available_supply == 50, 12);
+    }
+
+    #[test]
+    public fun test_predefined_data() {
+        // Test predefined species
+        let species = get_predefined_species();
+        assert!(vector::length(&species) == 3, 13);
+
+        // Test predefined certifications
+        let certs = get_common_certifications();
+        assert!(vector::length(&certs) == 3, 14);
+    }
+
+    #[test(producer = @0x123)]
+    #[expected_failure(abort_code = E_INSUFFICIENT_QUANTITY)]
+    public entry fun test_insufficient_quantity_failure(producer: signer) acquires TokenRegistry, LobsterToken, TokenSales {
+        // Create a token with quantity 10
+        create_lobster_token(
+            &producer,
+            string::utf8(b"Test Lobster"),
+            10,
+            string::utf8(b"Test Location"),
+            1704067200,
+            25,
+            vector::empty<String>()
+        );
+
+        // Try to purchase more than available (should fail)
+        purchase_tokens(&producer, @0x123, 15); // This should abort with E_INSUFFICIENT_QUANTITY
     }
 }
